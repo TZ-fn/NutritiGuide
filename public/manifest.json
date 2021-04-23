@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "NutritiGuide",
+  "name": "NutritiGuide",
   "icons": [
     {
       "src": "favicon.ico",
