@@ -15,6 +15,7 @@ function App() {
           www.flaticon.com
         </a>
       </div>
+      <div id='edamam-badge' data-color='badge' />
     </div>
   );
 }
