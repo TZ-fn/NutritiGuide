@@ -1,5 +1,5 @@
 const theme = {
-  background: 'hsla(82, 74%, 78%, 0.2)',
+  backgroundLightGreen: 'hsla(82, 74%, 78%, 0.2)',
   accentDarkGreen: 'hsla(157, 96%, 21%, 0.4)',
   grey100: 'hsl(0, 0%, 96%)',
   grey200: 'hsl(0, 0%, 90%)',
@@ -8,8 +8,9 @@ const theme = {
   light: 300,
   bold: 600,
   fontSize: {
-    xxxs: '1rem',
-    xxs: '1.2rem',
+    x4s: '0.8rem',
+    x3s: '1rem',
+    x2s: '1.2rem',
     xs: '1.4rem',
     s: '1.6rem',
     m: '2.1rem',
