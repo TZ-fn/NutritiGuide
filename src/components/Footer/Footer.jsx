@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import theme from '../../theme/mainTheme';
 
-const Wrapper = styled.div`
+const Wrapper = styled.footer`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-color: ${theme.background};
+  border-top: 2px solid ${theme.accentDarkGreen};
 `;
 
 const Footer = () => (
@@ -20,7 +23,7 @@ const Footer = () => (
         www.flaticon.com
       </a>
     </div>
-    <div id='edamam-badge' data-color='badge' />
+    <div id='edamam-badge' data-color='light' />
   </Wrapper>
 );
 
