@@ -1,12 +1,16 @@
 const theme = {
-  backgroundLightGreen: 'hsla(82, 74%, 78%, 0.2)',
-  accentDarkGreen: 'hsla(157, 96%, 21%, 0.4)',
+  backgroundLightGreen: 'hsla(82, 74%, 78%, 0.7)',
+  backgroundLighterGreen: 'hsla(82, 74%, 78%, 0.3)',
+  accentDarkGreen: 'hsla(157, 96%, 21%, 0.7)',
   grey100: 'hsl(0, 0%, 96%)',
   grey200: 'hsl(0, 0%, 90%)',
   grey300: 'hsl(0, 0%, 70%)',
   black: 'hsl(0, 0%, 0%)',
-  light: 300,
-  bold: 600,
+  fontWeight: {
+    light: 300,
+    regular: 400,
+    bold: 600,
+  },
   fontSize: {
     x4s: '0.8rem',
     x3s: '1rem',
