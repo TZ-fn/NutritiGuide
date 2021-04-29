@@ -7,7 +7,7 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <main style={{ height: '700px', backgroundColor: 'hsla(82, 74%, 78%, 0.3)' }}>
+      <main style={{ padding: '20px', borderRadius: '10px', flexGrow: '2' }}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, porro mollitia delectus illo
         pariatur beatae voluptatum veritatis eos consequuntur tempore, exercitationem, nobis ad
         architecto placeat? Libero impedit sint tenetur nobis.
