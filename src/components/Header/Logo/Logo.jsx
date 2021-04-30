@@ -7,9 +7,9 @@ const Logo = styled.h1`
   font-size: ${theme.fontSize.xl};
   font-weight: ${theme.fontWeight.regular};
 
-  @media screen and (max-width: 500px) {
+  @media (max-width: 480px) {
     & {
-      font-size: ${theme.fontSize.s};
+      font-size: ${theme.fontSize.m};
     }
   }
 `;
