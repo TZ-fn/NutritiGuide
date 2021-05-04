@@ -19,6 +19,7 @@ const Wrapper = styled.header`
   );
   border-bottom: 2px solid ${theme.accentDarkGreen};
   border-radius: 0 0 7px 7px;
+  box-shadow: hsla(0, 0%, 0%, 0.2) 0 5px 10px;
 
   & > h1,
   h3 {
