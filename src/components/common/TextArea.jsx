@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
 
@@ -19,10 +18,6 @@ const StyledTextArea = styled.textarea`
   }
 `;
 
-const TextArea = ({ children }) => <StyledTextArea>{children}</StyledTextArea>;
-
-TextArea.propTypes = {
-  children: PropTypes.string.isRequired,
-};
+const TextArea = () => <StyledTextArea />;
 
 export default TextArea;
