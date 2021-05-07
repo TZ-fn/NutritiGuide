@@ -12,12 +12,19 @@ const StyledMainWrapper = styled.main`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   flex-grow: 2;
   background: linear-gradient(
     ${theme.backgroundLighterGreen},
     hsl(0, 0%, 100%),
     ${theme.backgroundLighterGreen}
   );
+
+  @media (max-width: 1100px) {
+    & {
+      flex-direction: column;
+    }
+  }
 `;
 
 const StyledInputAreaWrapper = styled.div`
@@ -25,6 +32,12 @@ const StyledInputAreaWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 10px 60px;
+
+  @media (max-width: 1300px) {
+    & {
+      margin: 10px 15px;
+    }
+  }
 `;
 
 const Main = () => (

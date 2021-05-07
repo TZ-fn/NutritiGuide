@@ -15,6 +15,12 @@ const StyledWrapper = styled.div`
   font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: ${theme.fontSize.x2s};
+
+  @media (max-width: 1300px) {
+    & {
+      margin: 10px 15px;
+    }
+  }
 `;
 
 const AnalysisResults = ({ children }) => <StyledWrapper>{children}</StyledWrapper>;
