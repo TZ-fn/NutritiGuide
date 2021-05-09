@@ -7,6 +7,7 @@ import AnalysisIngredients from './AnalysisIngredients/AnalysisIngredients';
 import AnalysisResults from './AnalysisResults/AnalysisResults';
 
 const StyledMainWrapper = styled.main`
+  width: auto;
   padding: 30px;
   border-radius: 10px;
   display: flex;
@@ -23,6 +24,7 @@ const StyledMainWrapper = styled.main`
   @media (max-width: 1100px) {
     & {
       flex-direction: column;
+      padding: 10px;
     }
   }
 `;

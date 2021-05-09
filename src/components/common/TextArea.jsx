@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import theme from 'theme/mainTheme';
 
 const StyledTextArea = styled.textarea`
-  width: 400px;
+  min-width: 300px;
+  max-width: 400px;
   height: 250px;
   padding: 15px 15px;
   border-radius: 3px;
@@ -15,6 +16,12 @@ const StyledTextArea = styled.textarea`
 
   &:focus {
     outline: 2px solid ${theme.accentDarkGreen};
+  }
+
+  @media (min-width: 1300px) {
+    & {
+      width: 400px;
+    }
   }
 `;
 

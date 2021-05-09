@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import theme from 'theme/mainTheme';
 
 const StyledWrapper = styled.div`
-  width: 400px;
+  min-width: 300px;
+  max-width: 400px;
   height: 550px;
   margin: 10px 75px;
   padding: 15px 15px;
@@ -19,6 +20,12 @@ const StyledWrapper = styled.div`
   @media (max-width: 1300px) {
     & {
       margin: 10px 15px;
+    }
+  }
+
+  @media (min-width: 1300px) {
+    & {
+      width: 400px;
     }
   }
 `;

@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import theme from 'theme/mainTheme';
 
 const StyledWrapper = styled.div`
-  width: 400px;
+  min-width: 300px;
+  max-width: 400px;
   height: 150px;
   margin: 10px 60px;
   padding: 15px 15px;
@@ -14,6 +15,12 @@ const StyledWrapper = styled.div`
   font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: ${theme.fontSize.x2s};
+
+  @media (min-width: 1300px) {
+    & {
+      width: 400px;
+    }
+  }
 `;
 
 const AnalysisIngredients = () => <StyledWrapper>Ingredients</StyledWrapper>;
