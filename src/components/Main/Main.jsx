@@ -1,10 +1,10 @@
-import Button from 'components/common/Button';
-import TextArea from 'components/common/TextArea';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
-import AnalysisIngredients from './AnalysisIngredients/AnalysisIngredients';
+import Button from 'components/common/Button';
+import TextArea from 'components/common/TextArea';
 import AnalysisResults from './AnalysisResults/AnalysisResults';
+import fetchData from '../utils/fetchData';
 
 const StyledMainWrapper = styled.main`
   width: auto;
@@ -13,7 +13,7 @@ const StyledMainWrapper = styled.main`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-grow: 2;
   background: linear-gradient(
     ${theme.backgroundLighterGreen},
@@ -21,15 +21,16 @@ const StyledMainWrapper = styled.main`
     ${theme.backgroundLighterGreen}
   );
 
-  @media (max-width: 1100px) {
+  @media (max-width: 800px) {
     & {
       flex-direction: column;
+      align-items: center;
       padding: 10px;
     }
   }
 `;
 
-const StyledInputAreaWrapper = styled.div`
+const StyledInputAreaWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,17 +41,33 @@ const StyledInputAreaWrapper = styled.div`
       margin: 10px 15px;
     }
   }
+
+  @media (max-width: 470px) {
+    & {
+      margin: 3px 5px;
+    }
+  }
 `;
 
-const Main = () => (
-  <StyledMainWrapper>
-    <StyledInputAreaWrapper>
-      <TextArea />
-      <Button type='button'>Analyse!</Button>
-      <AnalysisIngredients />
-    </StyledInputAreaWrapper>
-    <AnalysisResults>Results</AnalysisResults>
-  </StyledMainWrapper>
-);
+const Main = () => {
+  const [analysisResults, setAnalysisResults] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(async () => {
+    setIsLoading(true);
+    setAnalysisResults(await fetchData());
+    setIsLoading(false);
+  }, []);
+
+  return (
+    <StyledMainWrapper>
+      <StyledInputAreaWrapper>
+        <TextArea />
+        <Button type='button'>Analyse!</Button>
+      </StyledInputAreaWrapper>
+      <AnalysisResults analysisResults={analysisResults} isLoading={isLoading} />
+    </StyledMainWrapper>
+  );
+};
 
 export default Main;
