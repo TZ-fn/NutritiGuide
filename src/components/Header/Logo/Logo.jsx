@@ -8,7 +8,7 @@ const Logo = styled.h1`
   font-weight: ${theme.fontWeight.regular};
   text-shadow: hsla(0, 0%, 0%, 0.2) 10px 10px 10px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 495px) {
     & {
       font-size: ${theme.fontSize.m};
     }
