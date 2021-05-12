@@ -50,12 +50,12 @@ const StyledInputAreaWrapper = styled.section`
 `;
 
 const Main = () => {
-  const [analysisResults, setAnalysisResults] = useState(null);
+  const [analysisResultsData, setAnalysisResultsData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(async () => {
     setIsLoading(true);
-    setAnalysisResults(await fetchData());
+    setAnalysisResultsData(await fetchData());
     setIsLoading(false);
   }, []);
 
@@ -65,7 +65,7 @@ const Main = () => {
         <TextArea />
         <Button type='button'>Analyse!</Button>
       </StyledInputAreaWrapper>
-      <AnalysisResults analysisResults={analysisResults} isLoading={isLoading} />
+      <AnalysisResults analysisResultsData={analysisResultsData} isLoading={isLoading} />
     </StyledMainWrapper>
   );
 };
