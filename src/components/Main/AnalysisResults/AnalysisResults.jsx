@@ -2,13 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
+import Heading from 'components/common/Heading';
+import Loader from 'components/common/Loader';
+import ResultsTable from './ResultsTable';
 
-const StyledWrapper = styled.div`
+const StyledDailyValuesInfo = styled.p`
+  font-size: ${theme.fontSize.x4s};
+`;
+
+const StyledWrapper = styled.section`
   min-width: 300px;
   max-width: 400px;
-  height: 550px;
+  min-height: 550px;
   margin: 10px 75px;
-  padding: 15px 15px;
+  padding: 0 10px;
   border: 1px solid black;
   border-radius: 3px;
   background-color: white;
@@ -16,6 +23,14 @@ const StyledWrapper = styled.div`
   font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: ${theme.fontSize.x2s};
+
+  & > h2 {
+    margin: 10px 5px;
+    padding-bottom: 7px;
+    border-bottom: 8px solid black;
+    font-size: ${theme.fontSize.l};
+    font-weight: ${theme.fontWeight.regular};
+  }
 
   @media (max-width: 1300px) {
     & {
@@ -30,10 +45,30 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const AnalysisResults = ({ children }) => <StyledWrapper>{children}</StyledWrapper>;
+const AnalysisResults = ({ analysisResultsData, isLoading }) =>
+  !isLoading ? (
+    <StyledWrapper>
+      <Heading HeadingLevel='h2'>Nutrition Facts</Heading>
+      <ResultsTable analysisResultsData={analysisResultsData} />
+      <StyledDailyValuesInfo>
+        * Percent Daily Values are based on a 2,000 calorie diet.
+      </StyledDailyValuesInfo>
+    </StyledWrapper>
+  ) : (
+    <StyledWrapper>
+      <Loader />
+    </StyledWrapper>
+  );
 
 AnalysisResults.propTypes = {
-  children: PropTypes.string.isRequired,
+  analysisResultsData: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array, PropTypes.object]),
+  ),
+  isLoading: PropTypes.bool.isRequired,
+};
+
+AnalysisResults.defaultProps = {
+  analysisResultsData: {},
 };
 
 export default AnalysisResults;
