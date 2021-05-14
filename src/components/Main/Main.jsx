@@ -55,6 +55,7 @@ const Main = () => {
 
   useEffect(async () => {
     setIsLoading(true);
+    // 200g%20butter
     setAnalysisResultsData(await fetchData());
     setIsLoading(false);
   }, []);

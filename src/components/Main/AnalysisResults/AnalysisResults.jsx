@@ -4,11 +4,7 @@ import styled from 'styled-components';
 import theme from 'theme/mainTheme';
 import Heading from 'components/common/Heading';
 import Loader from 'components/common/Loader';
-import ResultsTable from './ResultsTable';
-
-const StyledDailyValuesInfo = styled.p`
-  font-size: ${theme.fontSize.x4s};
-`;
+import ResultsTable from './ResultsTable/ResultsTable';
 
 const StyledWrapper = styled.section`
   min-width: 300px;
@@ -43,6 +39,11 @@ const StyledWrapper = styled.section`
       width: 400px;
     }
   }
+`;
+
+const StyledDailyValuesInfo = styled.p`
+  margin-top: 30px;
+  font-size: ${theme.fontSize.x4s};
 `;
 
 const AnalysisResults = ({ analysisResultsData, isLoading }) =>
