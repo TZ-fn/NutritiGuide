@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
 import Button from 'components/common/Button';
@@ -53,18 +53,20 @@ const Main = () => {
   const [analysisResultsData, setAnalysisResultsData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(async () => {
+  const handleDataFetching = async (inputData) => {
     setIsLoading(true);
-    // 200g%20butter
-    setAnalysisResultsData(await fetchData());
+    const data = await fetchData(inputData);
+    setAnalysisResultsData(data);
     setIsLoading(false);
-  }, []);
+  };
 
   return (
     <StyledMainWrapper>
       <StyledInputAreaWrapper>
         <TextArea />
-        <Button type='button'>Analyse!</Button>
+        <Button onClick={() => handleDataFetching()} type='button'>
+          Analyse!
+        </Button>
       </StyledInputAreaWrapper>
       <AnalysisResults analysisResultsData={analysisResultsData} isLoading={isLoading} />
     </StyledMainWrapper>
