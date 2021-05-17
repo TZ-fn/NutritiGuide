@@ -156,13 +156,18 @@ const ResultsTable = ({ analysisResultsData }) => (
 
       {/* Sugars */}
       <StyledIndentedTableRow>
-        <StyledCellData>
-          Total {analysisResultsData?.totalNutrients.SUGAR.label}{' '}
-          {analysisResultsData?.totalNutrients.SUGAR.quantity.toFixed(1)}{' '}
-          {analysisResultsData?.totalNutrients.SUGAR.unit}
-        </StyledCellData>
+        {analysisResultsData?.totalNutrients.SUGAR ? (
+          <StyledCellData>
+            {analysisResultsData?.totalNutrients.SUGAR.label}{' '}
+            {analysisResultsData?.totalNutrients?.SUGAR?.quantity.toFixed(1)}{' '}
+            {analysisResultsData?.totalNutrients?.SUGAR?.unit}
+          </StyledCellData>
+        ) : (
+          <StyledCellData>Sugars -</StyledCellData>
+        )}
         <StyledCellData>-</StyledCellData>
       </StyledIndentedTableRow>
+
       {/* Added Sugars Info */}
       <StyledIndentedTableRow>
         <StyledCellData>Includes - Added Sugars</StyledCellData>
