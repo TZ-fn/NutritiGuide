@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import theme from 'theme/mainTheme';
 
 const StyledTextArea = styled.textarea`
@@ -25,6 +26,14 @@ const StyledTextArea = styled.textarea`
   }
 `;
 
-const TextArea = () => <StyledTextArea />;
+const TextArea = ({ onChange }) => <StyledTextArea onChange={onChange} />;
+
+TextArea.propTypes = {
+  onChange: PropTypes.func,
+};
+
+TextArea.defaultProps = {
+  onChange: null,
+};
 
 export default TextArea;

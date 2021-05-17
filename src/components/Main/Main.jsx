@@ -5,7 +5,8 @@ import Button from 'components/common/Button';
 import TextArea from 'components/common/TextArea';
 import AnalysisResults from './AnalysisResults/AnalysisResults';
 import fetchData from '../utils/fetchData';
-
+import encodeInput from '../utils/encodeInput';
+/* eslint-disable */
 const StyledMainWrapper = styled.main`
   width: auto;
   padding: 30px;
@@ -52,19 +53,26 @@ const StyledInputAreaWrapper = styled.section`
 const Main = () => {
   const [analysisResultsData, setAnalysisResultsData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [inputValue, setInputValue] = useState('');
 
   const handleDataFetching = async (inputData) => {
+    inputData = encodeInput(inputData);
+    console.log(inputData);
     setIsLoading(true);
     const data = await fetchData(inputData);
     setAnalysisResultsData(data);
     setIsLoading(false);
   };
 
+  const handleInputValue = (value) => {
+    setInputValue(value);
+  };
+
   return (
     <StyledMainWrapper>
       <StyledInputAreaWrapper>
-        <TextArea />
-        <Button onClick={() => handleDataFetching()} type='button'>
+        <TextArea onChange={(e) => handleInputValue(e.target.value)} />
+        <Button onClick={() => handleDataFetching(inputValue)} type='button'>
           Analyse!
         </Button>
       </StyledInputAreaWrapper>
