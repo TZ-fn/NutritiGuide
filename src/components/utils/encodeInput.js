@@ -3,7 +3,8 @@ export default function encodeInput(input) {
   let encodedInput = '';
   encodedInput = input
     .trim()
-    .replace(/[,]?[ ]+?\n+/g, '%20and%20')
+    // cover line endings using combinations of commas and spaces
+    .replace(/[,]*[ ]*\n+/g, '%20and%20')
     .replace(/ +/g, '%20');
   return encodedInput;
 }
