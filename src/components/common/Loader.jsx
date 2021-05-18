@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import theme from 'theme/mainTheme';
 
 const StyledLoader = styled.div`
   display: inline-block;
@@ -20,7 +21,7 @@ const StyledLoader = styled.div`
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #000000;
+    background: ${theme.accentDarkGreen};
     margin: -4px 0 0 -4px;
   }
   & div:nth-child(1) {
