@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -28,13 +29,13 @@ const StyledWrapper = styled.section`
     font-weight: ${theme.fontWeight.regular};
   }
 
-  @media (max-width: 1300px) {
+  @media (max-width: 1200px) {
     & {
       margin: 10px 15px;
     }
   }
 
-  @media (min-width: 1300px) {
+  @media (min-width: 1200px) {
     & {
       width: 400px;
     }
@@ -47,6 +48,7 @@ const StyledDailyValuesInfo = styled.p`
 `;
 
 const AnalysisResults = ({ analysisResultsData, isLoading }) =>
+  // !analysisResultsData && <StyledWrapper />;
   !isLoading ? (
     <StyledWrapper>
       <Heading HeadingLevel='h2'>Nutrition Facts</Heading>

@@ -19,7 +19,7 @@ const StyledTextArea = styled.textarea`
     outline: 2px solid ${theme.accentDarkGreen};
   }
 
-  @media (min-width: 1300px) {
+  @media (min-width: 1200px) {
     & {
       width: 400px;
     }

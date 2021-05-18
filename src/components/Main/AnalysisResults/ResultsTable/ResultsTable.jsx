@@ -86,7 +86,7 @@ const ResultsTable = ({ analysisResultsData }) => (
       {/* Saturated Fat */}
       <StyledIndentedTableRow>
         <StyledCellData>
-          {analysisResultsData?.totalNutrients.FASAT.label}{' '}
+          {analysisResultsData?.totalNutrients.FASAT.label} Fat{' '}
           {analysisResultsData?.totalNutrients.FASAT.quantity.toFixed(1)}{' '}
           {analysisResultsData?.totalNutrients.FASAT.unit}
         </StyledCellData>
@@ -99,7 +99,7 @@ const ResultsTable = ({ analysisResultsData }) => (
       <StyledIndentedTableRow>
         {analysisResultsData?.totalNutrients.FATRN ? (
           <StyledCellData>
-            {analysisResultsData?.totalNutrients.FATRN.label}{' '}
+            {analysisResultsData?.totalNutrients.FATRN.label} Fat{' '}
             {analysisResultsData?.totalNutrients?.FATRN?.quantity.toFixed(1)}{' '}
             {analysisResultsData?.totalNutrients?.FATRN?.unit}
           </StyledCellData>
@@ -158,7 +158,7 @@ const ResultsTable = ({ analysisResultsData }) => (
       <StyledIndentedTableRow>
         {analysisResultsData?.totalNutrients.SUGAR ? (
           <StyledCellData>
-            {analysisResultsData?.totalNutrients.SUGAR.label}{' '}
+            Total {analysisResultsData?.totalNutrients.SUGAR.label}{' '}
             {analysisResultsData?.totalNutrients?.SUGAR?.quantity.toFixed(1)}{' '}
             {analysisResultsData?.totalNutrients?.SUGAR?.unit}
           </StyledCellData>
@@ -174,16 +174,16 @@ const ResultsTable = ({ analysisResultsData }) => (
       </StyledIndentedTableRow>
 
       {/* Protein */}
-      <StyledIndentedTableRow>
+      <StyledTableRow>
         <StyledCellData>
-          {analysisResultsData?.totalNutrients.PROCNT.label}{' '}
+          <b>{analysisResultsData?.totalNutrients.PROCNT.label}</b>{' '}
           {analysisResultsData?.totalNutrients.PROCNT.quantity.toFixed(1)}{' '}
           {analysisResultsData?.totalNutrients.PROCNT.unit}
         </StyledCellData>
         <StyledCellData>
           {analysisResultsData?.totalDaily.PROCNT.quantity.toFixed(0)} %
         </StyledCellData>
-      </StyledIndentedTableRow>
+      </StyledTableRow>
     </tbody>
   </StyledResultsTable>
 );
