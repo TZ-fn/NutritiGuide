@@ -10,8 +10,6 @@ const StyledTextArea = styled.textarea`
   padding: 15px 15px;
   border-radius: 3px;
   box-shadow: hsla(0, 0%, 0%, 0.2) 2px 2px 5px;
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: ${theme.fontSize.x2s};
   resize: none;
 

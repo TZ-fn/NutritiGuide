@@ -15,10 +15,9 @@ const StyledButton = styled.button`
     ${theme.backgroundLightGreen}
   );
   box-shadow: hsla(0, 0%, 0%, 0.2) 1px 1px 5px;
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: ${theme.fontSize.x2s};
   font-weight: 700;
+  cursor: pointer;
 
   &:hover {
     box-shadow: hsla(0, 0%, 0%, 0.2) 3px 3px 5px;
