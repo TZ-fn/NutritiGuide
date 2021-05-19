@@ -7,13 +7,13 @@ const theme = {
   grey300: 'hsl(0, 0%, 70%)',
   black: 'hsl(0, 0%, 0%)',
   messageBoxColors: {
-    info: 'hsla(210, 100%, 50%, 0.3)',
-    warning: 'hsla(57, 100%, 50%, 0.3)',
-    error: 'hsla(0, 100%, 50%, 0.3)',
-    shadows: {
-      info: 'hsla(210, 100%, 50%, 0.1)',
-      warning: 'hsla(57, 100%, 50%, 0.1)',
-      error: 'hsla(0, 100%, 50%, 0.1)',
+    info: '210, 100%, 50%',
+    warning: '57, 100%, 50%',
+    error: '0, 100%, 50%',
+    alpha: {
+      background: '0.2',
+      border: '0.8',
+      shadow: '0.2',
     },
   },
   fontWeight: {
