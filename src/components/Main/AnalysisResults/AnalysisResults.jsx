@@ -44,6 +44,7 @@ const StyledWrapper = styled.section`
 
 const StyledDailyValuesInfo = styled.p`
   margin-top: 30px;
+  margin-bottom: 10px;
   font-size: ${theme.fontSize.x4s};
 `;
 

@@ -11,7 +11,7 @@ const Wrapper = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0.9rem 2rem;
   background: linear-gradient(
     66deg,
     ${theme.backgroundLighterGreen},
