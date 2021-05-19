@@ -6,6 +6,16 @@ const theme = {
   grey200: 'hsl(0, 0%, 90%)',
   grey300: 'hsl(0, 0%, 70%)',
   black: 'hsl(0, 0%, 0%)',
+  messageBoxColors: {
+    info: 'hsla(210, 100%, 50%, 0.3)',
+    warning: 'hsla(57, 100%, 50%, 0.3)',
+    error: 'hsla(0, 100%, 50%, 0.3)',
+    shadows: {
+      info: 'hsla(210, 100%, 50%, 0.1)',
+      warning: 'hsla(57, 100%, 50%, 0.1)',
+      error: 'hsla(0, 100%, 50%, 0.1)',
+    },
+  },
   fontWeight: {
     light: 300,
     regular: 400,
