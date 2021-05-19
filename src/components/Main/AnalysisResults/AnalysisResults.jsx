@@ -48,9 +48,17 @@ const StyledDailyValuesInfo = styled.p`
   font-size: ${theme.fontSize.x4s};
 `;
 
-const AnalysisResults = ({ analysisResultsData, isLoading }) =>
-  // !analysisResultsData && <StyledWrapper />;
-  !isLoading ? (
+const AnalysisResults = ({ analysisResultsData, isLoading }) => {
+  if (!isLoading && !analysisResultsData) {
+    return (
+      <StyledWrapper>
+        <Heading HeadingLevel='h2'>Nutrition Facts</Heading>
+        <p>Please enter your food ingredients</p>
+      </StyledWrapper>
+    );
+  }
+
+  return !isLoading ? (
     <StyledWrapper>
       <Heading HeadingLevel='h2'>Nutrition Facts</Heading>
       <ResultsTable analysisResultsData={analysisResultsData} />
@@ -63,6 +71,7 @@ const AnalysisResults = ({ analysisResultsData, isLoading }) =>
       <Loader />
     </StyledWrapper>
   );
+};
 
 AnalysisResults.propTypes = {
   analysisResultsData: PropTypes.objectOf(
