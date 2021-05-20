@@ -24,10 +24,13 @@ const StyledTextArea = styled.textarea`
   }
 `;
 
-const TextArea = ({ onChange }) => <StyledTextArea onChange={onChange} />;
+const TextArea = ({ onChange, placeholder }) => (
+  <StyledTextArea placeholder={placeholder} onChange={onChange} />
+);
 
 TextArea.propTypes = {
   onChange: PropTypes.func,
+  placeholder: PropTypes.string.isRequired,
 };
 
 TextArea.defaultProps = {

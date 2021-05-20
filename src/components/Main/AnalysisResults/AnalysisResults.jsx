@@ -53,7 +53,7 @@ const AnalysisResults = ({ analysisResultsData, isLoading }) => {
     return (
       <StyledWrapper>
         <Heading HeadingLevel='h2'>Nutrition Facts</Heading>
-        <p>Please enter your food ingredients</p>
+        <p>Please enter your food&apos;s ingredients.</p>
       </StyledWrapper>
     );
   }
