@@ -10,7 +10,7 @@ import ResultsTable from './ResultsTable/ResultsTable';
 const StyledWrapper = styled.section`
   min-width: 300px;
   max-width: 400px;
-  min-height: 550px;
+  min-height: 575px;
   margin: 10px 75px;
   padding: 0 10px;
   border: 1px solid black;

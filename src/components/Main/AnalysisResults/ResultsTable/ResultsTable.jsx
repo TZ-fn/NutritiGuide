@@ -32,7 +32,6 @@ const StyledTableRow = styled.tr`
 
 const StyledIndentedTableRow = styled(StyledTableRow)`
   padding-left: 10px;
-  padding-right: -100px;
   border-width: 1px;
   border-style: solid;
   border-image: linear-gradient(to right, #fff 0% 2.5%, #000 2.5% 100%) 0 0 1 0;
