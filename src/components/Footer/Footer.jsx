@@ -7,7 +7,7 @@ const Wrapper = styled.footer`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 10px 0;
   background: linear-gradient(
     66deg,
     ${theme.backgroundLightGreen} 66%,
