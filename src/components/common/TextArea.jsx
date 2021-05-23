@@ -6,7 +6,7 @@ import theme from 'theme/mainTheme';
 const StyledTextArea = styled.textarea`
   min-width: 300px;
   max-width: 400px;
-  min-height: 250px;
+  min-height: 300px;
   padding: 15px 15px;
   border-radius: 3px;
   box-shadow: hsla(0, 0%, 0%, 0.2) 2px 2px 5px;

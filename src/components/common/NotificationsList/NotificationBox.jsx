@@ -9,7 +9,7 @@ const StyledNotificationBox = styled.li`
   padding: 30px 40px;
   min-width: 305px;
   width: 100%;
-  max-width: 1000px;
+  max-width: 800px;
   border: 2px solid
     hsla(${({ type }) => theme.messageBoxColors[type]}, ${theme.messageBoxColors.alpha.border});
   border-radius: 3px;
@@ -23,7 +23,10 @@ const StyledNotificationBox = styled.li`
     )
     1px 1px 5px;
   list-style: none;
-  opacity: 1;
+
+  &:hover {
+    box-shadow: hsla(0, 0%, 0%, 0.2) 3px 3px 5px;
+  }
 `;
 
 const StyledNotificationBoxIcon = styled.img``;
