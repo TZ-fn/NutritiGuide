@@ -65,12 +65,14 @@ const Main = () => {
   const [inputValue, setInputValue] = useState('');
 
   const handleDataFetching = async (inputData) => {
+    // prevent from getting the error more than once
     if (
       !inputValue.trim() &&
       notificationsArray.find((notification) => notification.id === 'noInputError')
     ) {
       return;
     }
+    // display an error when the input is empty
     if (
       !inputValue.trim() &&
       !notificationsArray.find((notification) => notification.id === 'noInputError')
@@ -85,6 +87,7 @@ const Main = () => {
       ]);
       return;
     }
+
     setIsLoading(true);
     const data = await fetchData(encodeInput(inputData));
     setAnalysisResultsData(data);
