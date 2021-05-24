@@ -6,14 +6,12 @@ import notificationsIcons from './notificationsIcons';
 
 const StyledNotificationBox = styled.li`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   position: relative;
   margin-bottom: 10px;
-  padding: 30px 40px;
+  padding: 15px 40px;
   min-width: 305px;
-  width: 100%;
-  max-width: 800px;
   border: 2px solid
     hsla(${({ type }) => theme.messageBoxColors[type]}, ${theme.messageBoxColors.alpha.border});
   border-radius: 3px;
@@ -38,12 +36,9 @@ const StyledNotificationBox = styled.li`
 `;
 
 const StyledNotificationBoxIcon = styled.img`
-  position: absolute;
-  top: 15px;
-  left: 20px;
   height: 50px;
   width: 50px;
-  margin-right: 20px;
+  margin-right: 30px;
 `;
 
 const StyledCloseButton = styled.button`
