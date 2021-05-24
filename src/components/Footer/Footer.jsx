@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
+import Link from 'components/common/Link';
 
 const Wrapper = styled.footer`
   display: flex;
@@ -39,13 +40,13 @@ const Footer = () => (
     <AttributionsWrapper>
       <div>
         Icons made by{' '}
-        <a href='https://www.freepik.com' title='Freepik'>
+        <Link href='https://www.freepik.com' title='Freepik'>
           Freepik
-        </a>{' '}
+        </Link>{' '}
         from{' '}
-        <a href='https://www.flaticon.com/' title='Flaticon'>
+        <Link href='https://www.flaticon.com/' title='Flaticon'>
           www.flaticon.com
-        </a>
+        </Link>
       </div>
       <div id='edamam-badge' data-color='transparent' />
     </AttributionsWrapper>
