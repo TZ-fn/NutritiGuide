@@ -2,8 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import theme from 'theme/mainTheme';
+import notificationsIcons from './notificationsIcons';
 
 const StyledNotificationBox = styled.li`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   margin-bottom: 10px;
   padding: 30px 40px;
@@ -25,11 +29,22 @@ const StyledNotificationBox = styled.li`
   list-style: none;
 
   &:hover {
-    box-shadow: hsla(0, 0%, 0%, 0.2) 3px 3px 5px;
+    box-shadow: hsla(
+        ${({ type }) => theme.messageBoxColors[type]},
+        ${theme.messageBoxColors.alpha.shadow}
+      )
+      4px 4px 5px;
   }
 `;
 
-const StyledNotificationBoxIcon = styled.img``;
+const StyledNotificationBoxIcon = styled.img`
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  height: 50px;
+  width: 50px;
+  margin-right: 20px;
+`;
 
 const StyledCloseButton = styled.button`
   position: absolute;
@@ -53,7 +68,7 @@ const StyledCloseButton = styled.button`
 
 const MessageBox = ({ id, type, children, handleNotificationDeleting }) => (
   <StyledNotificationBox id={id} type={type}>
-    <StyledNotificationBoxIcon alt='' />
+    <StyledNotificationBoxIcon src={notificationsIcons[type]} alt='' />
     {children}
     <StyledCloseButton
       onClick={(e) => handleNotificationDeleting(e.currentTarget.parentNode.id)}
