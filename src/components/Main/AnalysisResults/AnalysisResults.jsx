@@ -8,10 +8,10 @@ import Loader from 'components/common/Loader';
 import ResultsTable from './ResultsTable/ResultsTable';
 
 const StyledWrapper = styled.section`
-  min-width: 300px;
+  min-width: 330px;
   max-width: 400px;
   min-height: 575px;
-  margin: 10px 75px;
+  margin: 10px 35px;
   padding: 0 10px;
   border: 1px solid black;
   border-radius: 3px;
@@ -31,7 +31,7 @@ const StyledWrapper = styled.section`
 
   @media (max-width: 1200px) {
     & {
-      margin: 10px 15px;
+      margin: 10px 5px;
     }
   }
 
@@ -57,18 +57,17 @@ const AnalysisResults = ({ analysisResultsData, isLoading }) => {
       </StyledWrapper>
     );
   }
-
-  return !isLoading ? (
+  return isLoading ? (
+    <StyledWrapper>
+      <Loader />
+    </StyledWrapper>
+  ) : (
     <StyledWrapper>
       <Heading HeadingLevel='h2'>Nutrition Facts</Heading>
       <ResultsTable analysisResultsData={analysisResultsData} />
       <StyledDailyValuesInfo>
         * Percent Daily Values are based on a 2,000 calorie diet.
       </StyledDailyValuesInfo>
-    </StyledWrapper>
-  ) : (
-    <StyledWrapper>
-      <Loader />
     </StyledWrapper>
   );
 };

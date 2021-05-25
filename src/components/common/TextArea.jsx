@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import theme from 'theme/mainTheme';
 
 const StyledTextArea = styled.textarea`
-  min-width: 300px;
+  min-width: 328px;
   max-width: 400px;
-  min-height: 300px;
+  min-height: 250px;
   padding: 15px 15px;
   border-radius: 3px;
   box-shadow: hsla(0, 0%, 0%, 0.2) 2px 2px 5px;

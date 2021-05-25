@@ -5,8 +5,8 @@ import theme from 'theme/mainTheme';
 const StyledLoader = styled.div`
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   top: 225px;
   left: 5px;
 
@@ -18,8 +18,8 @@ const StyledLoader = styled.div`
     content: ' ';
     display: block;
     position: absolute;
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: ${theme.accentDarkGreen};
     margin: -4px 0 0 -4px;
