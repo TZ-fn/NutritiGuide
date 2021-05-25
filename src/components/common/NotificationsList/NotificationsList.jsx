@@ -30,13 +30,7 @@ const NotificationsList = ({ notificationsArray, handleNotificationDeleting }) =
 );
 
 NotificationsList.propTypes = {
-  notificationsArray: PropTypes.arrayOf(
-    PropTypes.objectOf({
-      id: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      children: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
+  notificationsArray: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string.isRequired)).isRequired,
   handleNotificationDeleting: PropTypes.func.isRequired,
 };
 
