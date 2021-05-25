@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import theme from 'theme/mainTheme';
+import setHslaColor from 'components/utils/extractShadow';
 import notificationsIcons from './notificationsIcons';
 
 const StyledNotificationBox = styled.li`
@@ -12,26 +13,14 @@ const StyledNotificationBox = styled.li`
   margin-bottom: 10px;
   padding: 15px 40px;
   min-width: 305px;
-  border: 2px solid
-    hsla(${({ type }) => theme.messageBoxColors[type]}, ${theme.messageBoxColors.alpha.border});
+  border: 2px solid ${({ type }) => setHslaColor(type, 'border')};
   border-radius: 3px;
-  background-color: hsla(
-    ${({ type }) => theme.messageBoxColors[type]},
-    ${theme.messageBoxColors.alpha.background}
-  );
-  box-shadow: hsla(
-      ${({ type }) => theme.messageBoxColors[type]},
-      ${theme.messageBoxColors.alpha.shadow}
-    )
-    1px 1px 5px;
+  background-color: ${({ type }) => setHslaColor(type, 'background')};
+  box-shadow: ${({ type }) => setHslaColor(type, 'shadow')} 1px 1px 5px;
   list-style: none;
 
   &:hover {
-    box-shadow: hsla(
-        ${({ type }) => theme.messageBoxColors[type]},
-        ${theme.messageBoxColors.alpha.shadow}
-      )
-      4px 4px 5px;
+    box-shadow: ${({ type }) => setHslaColor(type, 'shadow')} 4px 4px 5px;
   }
 `;
 
@@ -39,6 +28,13 @@ const StyledNotificationBoxIcon = styled.img`
   height: 50px;
   width: 50px;
   margin-right: 30px;
+
+  @media (max-width: 600px) {
+    & {
+      margin-right: 10px;
+      margin-left: -20px;
+    }
+  }
 `;
 
 const StyledCloseButton = styled.button`

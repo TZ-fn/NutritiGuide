@@ -7,9 +7,9 @@ const theme = {
   grey300: 'hsl(0, 0%, 70%)',
   black: 'hsl(0, 0%, 0%)',
   messageBoxColors: {
-    info: '210, 100%, 50%',
-    warning: '57, 100%, 50%',
-    error: '0, 100%, 50%',
+    info: '198, 93%, 49%',
+    warning: '36, 89%, 54%',
+    error: '0, 100%, 48%',
     alpha: {
       background: '0.2',
       border: '0.8',
