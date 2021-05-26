@@ -8,7 +8,7 @@ import defaultNotification from 'components/common/NotificationsList/defaultNoti
 import AnalysisResults from './AnalysisResults/AnalysisResults';
 import fetchData from '../utils/fetchData';
 import encodeInput from '../utils/encodeInput';
-/* eslint-disable */
+
 const StyledMainWrapper = styled.main`
   width: auto;
   padding: 10px 20px;
@@ -16,7 +16,7 @@ const StyledMainWrapper = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-grow: 2;
   background: linear-gradient(
     ${theme.backgroundLighterGreen},
@@ -43,7 +43,7 @@ const StyledInputAreaWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 60px;
+  margin: 10px 30px;
 
   @media (max-width: 1200px) {
     & {
@@ -65,31 +65,58 @@ const Main = () => {
   const [inputValue, setInputValue] = useState('');
 
   const handleDataFetching = async (inputData) => {
-    // prevent from getting the error more than once
+    // prevent from getting the empty-input error more than once
     if (
       !inputValue.trim() &&
-      notificationsArray.find((notification) => notification.id === 'noInputError')
+      notificationsArray.find((notification) => notification.id === 'noInputWarning')
     ) {
       return;
     }
     // display an error when the input is empty
     if (
       !inputValue.trim() &&
-      !notificationsArray.find((notification) => notification.id === 'noInputError')
+      !notificationsArray.find((notification) => notification.id === 'noInputWarning')
     ) {
       setNotificationsArray((prevState) => [
         ...prevState,
         {
-          id: 'noInputError',
-          type: 'error',
+          id: 'noInputWarning',
+          type: 'warning',
           children: 'Please enter your food\'s ingredients before pressing the "Analyse" button.',
         },
       ]);
       return;
     }
-
     setIsLoading(true);
+
+    // remove all error and warning notifications if the input data is valid
+    setNotificationsArray((prevState) => [
+      ...prevState.filter(
+        (notification) => notification.type !== 'warning' && notification.type !== 'error',
+      ),
+    ]);
     const data = await fetchData(encodeInput(inputData));
+
+    // check for an empty response, the free version API won't send an error when any of the ingredients is invalid
+    try {
+      if (data.calories === 0 && data.totalWeight === 0) {
+        throw new Error(
+          'Please check the ingredient spelling or if you have entered a quantities for the ingredients.',
+        );
+      }
+    } catch (e) {
+      setNotificationsArray((prevState) => [
+        ...prevState,
+        {
+          id: 'invalidItemError',
+          type: 'error',
+          children: e.message,
+        },
+      ]);
+      setIsLoading(false);
+      return;
+    }
+
     setAnalysisResultsData(data);
     setIsLoading(false);
   };
@@ -102,13 +129,15 @@ const Main = () => {
           opacity: 0,
         },
       ],
-      400,
+      300,
     ).onfinish = setTimeout(
       () =>
         setNotificationsArray([
-          ...notificationsArray.filter((notification) => notification.id !== notificationId),
+          ...notificationsArray.filter(
+            (currentNotification) => currentNotification.id !== notificationId,
+          ),
         ]),
-      400,
+      300,
     );
   };
 
