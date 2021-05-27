@@ -14,6 +14,7 @@ const StyledNotificationBox = styled.li`
   padding: 15px 40px;
   min-width: 328px;
   border: 2px solid ${({ type }) => setHslaColor(type, 'border')};
+  border-left: 10px solid ${({ type }) => setHslaColor(type, 'border')};
   border-radius: 3px;
   background-color: ${({ type }) => setHslaColor(type, 'background')};
   box-shadow: ${({ type }) => setHslaColor(type, 'shadow')} 1px 1px 5px;
