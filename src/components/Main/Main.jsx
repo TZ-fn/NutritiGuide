@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer, useContext } from 'react';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
 import TextArea from 'components/common/TextArea';
 import Button from 'components/common/Button';
 import NotificationsList from 'components/common/NotificationsList/NotificationsList';
-import defaultNotification from 'components/common/NotificationsList/defaultNotification';
+import {
+  emptyInputNotification,
+  emptyResponseNotification,
+} from 'components/reducer/defaultNotifications';
+import initialState from 'components/reducer/initialState';
+import reducer from 'components/reducer/reducer';
 import AnalysisResults from './AnalysisResults/AnalysisResults';
 import fetchData from '../utils/fetchData';
 import encodeInput from '../utils/encodeInput';
-
+/* eslint-disable */
 const StyledMainWrapper = styled.main`
   width: auto;
   padding: 10px 20px;
@@ -60,59 +65,30 @@ const StyledInputAreaWrapper = styled.section`
 
 const Main = () => {
   const [analysisResultsData, setAnalysisResultsData] = useState(null);
-  const [notificationsArray, setNotificationsArray] = useState([defaultNotification]);
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const notificationsContext = useContext(state.notifications);
 
   const handleDataFetching = async (inputData) => {
-    // prevent from getting the empty-input error more than once
-    if (
-      !inputValue.trim() &&
-      notificationsArray.find((notification) => notification.id === 'noInputWarning')
-    ) {
-      return;
-    }
-    // display an error when the input is empty
-    if (
-      !inputValue.trim() &&
-      !notificationsArray.find((notification) => notification.id === 'noInputWarning')
-    ) {
-      setNotificationsArray((prevState) => [
-        ...prevState,
-        {
-          id: 'noInputWarning',
-          type: 'warning',
-          children: 'Please enter your food\'s ingredients before pressing the "Analyse" button.',
-        },
-      ]);
-      return;
-    }
-    setIsLoading(true);
+    // remove all error and warning notifications
+    dispatch({ type: 'CLEAR_ERRORS', payload: {} });
 
-    // remove all error and warning notifications if the input data is valid
-    setNotificationsArray((prevState) => [
-      ...prevState.filter(
-        (notification) => notification.type !== 'warning' && notification.type !== 'error',
-      ),
-    ]);
+    // display an error when the input is empty
+    if (!inputValue.trim()) {
+      dispatch({
+        type: 'ADD_NOTIFICATION',
+        payload: emptyInputNotification,
+      });
+      return;
+    }
+
+    setIsLoading(true);
     const data = await fetchData(encodeInput(inputData));
 
-    // check for an empty response, the free version API won't send an error when any of the ingredients is invalid
-    try {
-      if (data.calories === 0 && data.totalWeight === 0) {
-        throw new Error(
-          'Please check the ingredient spelling or if you have entered a quantities for the ingredients.',
-        );
-      }
-    } catch (e) {
-      setNotificationsArray((prevState) => [
-        ...prevState,
-        {
-          id: 'invalidItemError',
-          type: 'error',
-          children: e.message,
-        },
-      ]);
+    // check for an empty response, the free version API won't send an error when any of the ingredients are invalid
+    if (data.totalWeight === 0) {
+      dispatch({ type: 'ADD_NOTIFICATION', payload: emptyResponseNotification });
       setIsLoading(false);
       return;
     }
@@ -130,15 +106,9 @@ const Main = () => {
         },
       ],
       300,
-    ).onfinish = setTimeout(
-      () =>
-        setNotificationsArray([
-          ...notificationsArray.filter(
-            (currentNotification) => currentNotification.id !== notificationId,
-          ),
-        ]),
-      300,
-    );
+    ).onfinish = setTimeout(() => {
+      dispatch({ type: 'DELETE_NOTIFICATION', payload: notificationId });
+    }, 300);
   };
 
   const handleInputValue = (value) => {
@@ -149,7 +119,7 @@ const Main = () => {
     <StyledMainWrapper>
       <NotificationsList
         handleNotificationDeleting={handleNotificationDeleting}
-        notificationsArray={notificationsArray}
+        notificationsArray={state.notifications}
       />
       <StyledFlexWrapper>
         <StyledInputAreaWrapper>
