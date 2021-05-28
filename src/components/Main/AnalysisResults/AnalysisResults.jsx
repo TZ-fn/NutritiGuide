@@ -11,7 +11,7 @@ const StyledWrapper = styled.section`
   max-width: 400px;
   min-height: 575px;
   margin: 10px 35px;
-  padding: 0 10px;
+  padding: 0 20px;
   border: 1px solid black;
   border-radius: 3px;
   background-color: white;

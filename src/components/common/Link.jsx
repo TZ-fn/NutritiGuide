@@ -17,7 +17,7 @@ const StyledLink = styled.a`
 const Link = ({ children, href }) => <StyledLink href={href}>{children}</StyledLink>;
 
 Link.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired,
 };
 

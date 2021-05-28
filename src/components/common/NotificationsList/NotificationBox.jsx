@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import theme from 'theme/mainTheme';
-import setHslaColor from 'components/utils/extractShadow';
+import setHslaColor from 'components/utils/setHslaColor';
 import notificationsIcons from './notificationsIcons';
 
 const StyledNotificationBox = styled.li`
@@ -21,7 +21,7 @@ const StyledNotificationBox = styled.li`
   list-style: none;
 
   &:hover {
-    box-shadow: ${({ type }) => setHslaColor(type, 'shadow')} 4px 4px 5px;
+    box-shadow: ${({ type }) => setHslaColor(type, 'shadow')} 3px 3px 5px;
   }
 `;
 
@@ -73,7 +73,7 @@ const MessageBox = ({ id, type, children, handleNotificationDeleting }) => (
 );
 
 MessageBox.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   type: PropTypes.oneOf(['info', 'warning', 'error']).isRequired,
   id: PropTypes.string.isRequired,
   handleNotificationDeleting: PropTypes.func.isRequired,

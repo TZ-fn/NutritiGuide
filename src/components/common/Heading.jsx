@@ -5,7 +5,7 @@ const Heading = ({ HeadingLevel, children }) => <HeadingLevel>{children}</Headin
 
 Heading.propTypes = {
   HeadingLevel: PropTypes.string,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 Heading.defaultProps = {

@@ -35,7 +35,7 @@ const StyledButton = styled.button`
 const Button = ({ children, onClick }) => <StyledButton onClick={onClick}>{children}</StyledButton>;
 
 Button.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
