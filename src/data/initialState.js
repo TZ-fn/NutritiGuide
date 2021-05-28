@@ -1,4 +1,4 @@
-import { initialNotification } from 'components/reducer/defaultNotifications';
+import { initialNotification } from 'data/defaultNotifications';
 
 const initialState = {
   notifications: [initialNotification],
