@@ -4,11 +4,8 @@ import theme from 'theme/mainTheme';
 import TextArea from 'components/common/TextArea';
 import Button from 'components/common/Button';
 import NotificationsList from 'components/common/NotificationsList/NotificationsList';
-import {
-  emptyInputNotification,
-  emptyResponseNotification,
-} from 'components/reducer/defaultNotifications';
-import initialState from 'components/reducer/initialState';
+import { emptyInputNotification, emptyResponseNotification } from 'data/defaultNotifications';
+import initialState from 'data/initialState';
 import reducer from 'components/reducer/reducer';
 import AnalysisResults from './AnalysisResults/AnalysisResults';
 import fetchData from '../utils/fetchData';
@@ -98,17 +95,7 @@ const Main = () => {
   };
 
   const handleNotificationDeleting = (notificationId) => {
-    const notification = document.querySelector(`#${notificationId}`);
-    notification.animate(
-      [
-        {
-          opacity: 0,
-        },
-      ],
-      300,
-    ).onfinish = setTimeout(() => {
-      dispatch({ type: 'DELETE_NOTIFICATION', payload: notificationId });
-    }, 300);
+    dispatch({ type: 'DELETE_NOTIFICATION', payload: notificationId });
   };
 
   const handleInputValue = (value) => {
