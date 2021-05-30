@@ -183,6 +183,48 @@ const ResultsTable = ({ analysisResultsData }) => (
           {analysisResultsData?.totalDaily.PROCNT.quantity.toFixed(0)} %
         </StyledCellData>
       </StyledTableRow>
+
+      {/* Vitamin D */}
+      <StyledTableRow>
+        <StyledCellData>
+          {analysisResultsData?.totalNutrients.VITD.label}{' '}
+          {analysisResultsData?.totalNutrients.VITD.quantity.toFixed(1)}{' '}
+          {analysisResultsData?.totalNutrients.VITD.unit}
+        </StyledCellData>
+        <StyledCellData>
+          {analysisResultsData?.totalDaily.VITD.quantity.toFixed(0)} %
+        </StyledCellData>
+      </StyledTableRow>
+
+      {/* Calcium */}
+      <StyledTableRow>
+        <StyledCellData>
+          {analysisResultsData?.totalNutrients.CA.label}{' '}
+          {analysisResultsData?.totalNutrients.CA.quantity.toFixed(1)}{' '}
+          {analysisResultsData?.totalNutrients.CA.unit}
+        </StyledCellData>
+        <StyledCellData>{analysisResultsData?.totalDaily.CA.quantity.toFixed(0)} %</StyledCellData>
+      </StyledTableRow>
+
+      {/* Iron */}
+      <StyledTableRow>
+        <StyledCellData>
+          {analysisResultsData?.totalNutrients.FE.label}{' '}
+          {analysisResultsData?.totalNutrients.FE.quantity.toFixed(1)}{' '}
+          {analysisResultsData?.totalNutrients.FE.unit}
+        </StyledCellData>
+        <StyledCellData>{analysisResultsData?.totalDaily.FE.quantity.toFixed(0)} %</StyledCellData>
+      </StyledTableRow>
+
+      {/* Potassium */}
+      <StyledTableRow>
+        <StyledCellData>
+          {analysisResultsData?.totalNutrients.K.label}{' '}
+          {analysisResultsData?.totalNutrients.K.quantity.toFixed(1)}{' '}
+          {analysisResultsData?.totalNutrients.K.unit}
+        </StyledCellData>
+        <StyledCellData>{analysisResultsData?.totalDaily.K.quantity.toFixed(0)} %</StyledCellData>
+      </StyledTableRow>
     </tbody>
   </StyledResultsTable>
 );
