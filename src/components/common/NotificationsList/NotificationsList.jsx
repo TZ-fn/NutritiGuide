@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import './styles.css';
 import NotificationBox from './NotificationBox';
 
 const StyledUnorderedList = styled.ul`
@@ -15,22 +14,32 @@ const StyledUnorderedList = styled.ul`
   padding: 0;
 `;
 
+const FlexTransitionGroup = styled(TransitionGroup)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 const NotificationsList = ({ notificationsArray, handleNotificationDeleting }) => (
   <StyledUnorderedList>
-    <TransitionGroup>
+    <FlexTransitionGroup>
       {notificationsArray.map(({ id, type, children }) => (
-        <CSSTransition classNames='notification' key={id} timeout={{ enter: 500, exit: 450 }}>
-          <NotificationBox
-            handleNotificationDeleting={handleNotificationDeleting}
-            key={id}
-            id={id}
-            type={type}
-          >
-            {children}
-          </NotificationBox>
+        <CSSTransition classNames='notification' key={id} timeout={500}>
+          {(state) => (
+            <NotificationBox
+              handleNotificationDeleting={handleNotificationDeleting}
+              key={id}
+              id={id}
+              type={type}
+              state={state}
+            >
+              {children}
+            </NotificationBox>
+          )}
         </CSSTransition>
       ))}
-    </TransitionGroup>
+    </FlexTransitionGroup>
   </StyledUnorderedList>
 );
 

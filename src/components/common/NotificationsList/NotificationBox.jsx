@@ -20,6 +20,10 @@ const StyledNotificationBox = styled.li`
   box-shadow: ${({ type }) => setHslaColor(type, 'shadow')} 1px 1px 5px;
   list-style: none;
 
+  transition: 0.3s;
+  opacity: ${({ state }) => (state === 'entering' || state === 'entered' ? 1 : 0)};
+  display: ${({ state }) => (state === 'exited' ? 'none' : 'flex')};
+
   &:hover {
     box-shadow: ${({ type }) => setHslaColor(type, 'shadow')} 3px 3px 5px;
   }
@@ -58,8 +62,8 @@ const StyledCloseButton = styled.button`
   }
 `;
 
-const MessageBox = ({ id, type, children, handleNotificationDeleting }) => (
-  <StyledNotificationBox id={id} type={type}>
+const MessageBox = ({ id, type, children, handleNotificationDeleting, state }) => (
+  <StyledNotificationBox state={state} id={id} type={type}>
     <StyledNotificationBoxIcon src={notificationsIcons[type]} alt='' />
     {children}
     <StyledCloseButton
@@ -73,10 +77,11 @@ const MessageBox = ({ id, type, children, handleNotificationDeleting }) => (
 );
 
 MessageBox.propTypes = {
-  children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['info', 'warning', 'error']).isRequired,
   id: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['info', 'warning', 'error']).isRequired,
+  children: PropTypes.node.isRequired,
   handleNotificationDeleting: PropTypes.func.isRequired,
+  state: PropTypes.string.isRequired,
 };
 
 export default MessageBox;
