@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import theme from 'theme/mainTheme';
+import ResultsTableMainData from './ResultsTableMainData';
+/* eslint-disable */
 
-const StyledResultsTable = styled.table`
+const StyledTable = styled.table`
   width: 100%;
   font-size: ${theme.fontSize.x3s};
 `;
@@ -55,7 +57,7 @@ const StyledDailyValueCellData = styled(StyledCellData)`
 `;
 
 const ResultsTable = ({ analysisResultsData }) => (
-  <StyledResultsTable>
+  <StyledTable>
     <StyledTableHeader>
       <StyledTableRow isAPS>
         <StyledCellHeader>Amount Per Serving</StyledCellHeader>
@@ -63,6 +65,7 @@ const ResultsTable = ({ analysisResultsData }) => (
     </StyledTableHeader>
 
     <tbody>
+      {/* Main table heading */}
       <StyledCaloriesTableRow>
         <StyledCaloriesCellHeader>Calories</StyledCaloriesCellHeader>
         <StyledCaloriesCellData>{analysisResultsData?.calories}</StyledCaloriesCellData>
@@ -71,163 +74,9 @@ const ResultsTable = ({ analysisResultsData }) => (
         <StyledCellData />
         <StyledDailyValueCellData>% Daily Value*</StyledDailyValueCellData>
       </StyledTableRow>
-
-      {/* hard-coded markup for values that will always appear, I will try to refactor it using DRY principle */}
-      {/* Total Fat */}
-      <StyledTableRow>
-        <StyledCellData>
-          <b>Total {analysisResultsData?.totalNutrients.FAT.label}</b>{' '}
-          {analysisResultsData?.totalNutrients.FAT.quantity.toFixed(1)}{' '}
-          {analysisResultsData?.totalNutrients.FAT.unit}
-        </StyledCellData>
-        <StyledCellData>{analysisResultsData?.totalDaily.FAT.quantity.toFixed(0)} %</StyledCellData>
-      </StyledTableRow>
-
-      {/* Saturated Fat */}
-      <StyledIndentedTableRow>
-        <StyledCellData>
-          {analysisResultsData?.totalNutrients.FASAT.label} Fat{' '}
-          {analysisResultsData?.totalNutrients.FASAT.quantity.toFixed(1)}{' '}
-          {analysisResultsData?.totalNutrients.FASAT.unit}
-        </StyledCellData>
-        <StyledCellData>
-          {analysisResultsData?.totalDaily.FASAT.quantity.toFixed(0)} %
-        </StyledCellData>
-      </StyledIndentedTableRow>
-
-      {/* Trans Fat */}
-      <StyledIndentedTableRow>
-        {analysisResultsData?.totalNutrients.FATRN ? (
-          <StyledCellData>
-            {analysisResultsData?.totalNutrients.FATRN.label} Fat{' '}
-            {analysisResultsData?.totalNutrients?.FATRN?.quantity.toFixed(1)}{' '}
-            {analysisResultsData?.totalNutrients?.FATRN?.unit}
-          </StyledCellData>
-        ) : (
-          <StyledCellData>Trans Fat -</StyledCellData>
-        )}
-        <StyledCellData>-</StyledCellData>
-      </StyledIndentedTableRow>
-
-      {/* Cholesterol */}
-      <StyledTableRow>
-        <StyledCellData>
-          <b>{analysisResultsData?.totalNutrients.CHOLE.label}</b>{' '}
-          {analysisResultsData?.totalNutrients.CHOLE.quantity.toFixed(1)}{' '}
-          {analysisResultsData?.totalNutrients.CHOLE.unit}
-        </StyledCellData>
-        <StyledCellData>
-          {analysisResultsData?.totalDaily.CHOLE.quantity.toFixed(0)} %
-        </StyledCellData>
-      </StyledTableRow>
-
-      {/* Sodium */}
-      <StyledTableRow>
-        <StyledCellData>
-          <b>{analysisResultsData?.totalNutrients.NA.label}</b>{' '}
-          {analysisResultsData?.totalNutrients.NA.quantity.toFixed(1)}{' '}
-          {analysisResultsData?.totalNutrients.NA.unit}
-        </StyledCellData>
-        <StyledCellData>{analysisResultsData?.totalDaily.NA.quantity.toFixed(0)} %</StyledCellData>
-      </StyledTableRow>
-
-      {/* Total Carbohydrates */}
-      <StyledTableRow>
-        <StyledCellData>
-          <b>Total Carbohydrate</b> {analysisResultsData?.totalNutrients.CHOCDF.quantity.toFixed(1)}{' '}
-          {analysisResultsData?.totalNutrients.CHOCDF.unit}
-        </StyledCellData>
-        <StyledCellData>
-          {analysisResultsData?.totalDaily.CHOCDF.quantity.toFixed(0)} %
-        </StyledCellData>
-      </StyledTableRow>
-
-      {/* Fiber */}
-      <StyledIndentedTableRow>
-        <StyledCellData>
-          Dietary {analysisResultsData?.totalNutrients.FIBTG.label}{' '}
-          {analysisResultsData?.totalNutrients.FIBTG.quantity.toFixed(1)}{' '}
-          {analysisResultsData?.totalNutrients.FIBTG.unit}
-        </StyledCellData>
-        <StyledCellData>
-          {analysisResultsData?.totalDaily.FIBTG.quantity.toFixed(0)} %
-        </StyledCellData>
-      </StyledIndentedTableRow>
-
-      {/* Sugars */}
-      <StyledIndentedTableRow>
-        {analysisResultsData?.totalNutrients.SUGAR ? (
-          <StyledCellData>
-            Total {analysisResultsData?.totalNutrients.SUGAR.label}{' '}
-            {analysisResultsData?.totalNutrients?.SUGAR?.quantity.toFixed(1)}{' '}
-            {analysisResultsData?.totalNutrients?.SUGAR?.unit}
-          </StyledCellData>
-        ) : (
-          <StyledCellData>Sugars -</StyledCellData>
-        )}
-        <StyledCellData>-</StyledCellData>
-      </StyledIndentedTableRow>
-
-      {/* Added Sugars Info */}
-      <StyledIndentedTableRow>
-        <StyledCellData>Includes - Added Sugars</StyledCellData>
-      </StyledIndentedTableRow>
-
-      {/* Protein */}
-      <StyledTableRow>
-        <StyledCellData>
-          <b>{analysisResultsData?.totalNutrients.PROCNT.label}</b>{' '}
-          {analysisResultsData?.totalNutrients.PROCNT.quantity.toFixed(1)}{' '}
-          {analysisResultsData?.totalNutrients.PROCNT.unit}
-        </StyledCellData>
-        <StyledCellData>
-          {analysisResultsData?.totalDaily.PROCNT.quantity.toFixed(0)} %
-        </StyledCellData>
-      </StyledTableRow>
-
-      {/* Vitamin D */}
-      <StyledTableRow>
-        <StyledCellData>
-          {analysisResultsData?.totalNutrients.VITD.label}{' '}
-          {analysisResultsData?.totalNutrients.VITD.quantity.toFixed(1)}{' '}
-          {analysisResultsData?.totalNutrients.VITD.unit}
-        </StyledCellData>
-        <StyledCellData>
-          {analysisResultsData?.totalDaily.VITD.quantity.toFixed(0)} %
-        </StyledCellData>
-      </StyledTableRow>
-
-      {/* Calcium */}
-      <StyledTableRow>
-        <StyledCellData>
-          {analysisResultsData?.totalNutrients.CA.label}{' '}
-          {analysisResultsData?.totalNutrients.CA.quantity.toFixed(1)}{' '}
-          {analysisResultsData?.totalNutrients.CA.unit}
-        </StyledCellData>
-        <StyledCellData>{analysisResultsData?.totalDaily.CA.quantity.toFixed(0)} %</StyledCellData>
-      </StyledTableRow>
-
-      {/* Iron */}
-      <StyledTableRow>
-        <StyledCellData>
-          {analysisResultsData?.totalNutrients.FE.label}{' '}
-          {analysisResultsData?.totalNutrients.FE.quantity.toFixed(1)}{' '}
-          {analysisResultsData?.totalNutrients.FE.unit}
-        </StyledCellData>
-        <StyledCellData>{analysisResultsData?.totalDaily.FE.quantity.toFixed(0)} %</StyledCellData>
-      </StyledTableRow>
-
-      {/* Potassium */}
-      <StyledTableRow>
-        <StyledCellData>
-          {analysisResultsData?.totalNutrients.K.label}{' '}
-          {analysisResultsData?.totalNutrients.K.quantity.toFixed(1)}{' '}
-          {analysisResultsData?.totalNutrients.K.unit}
-        </StyledCellData>
-        <StyledCellData>{analysisResultsData?.totalDaily.K.quantity.toFixed(0)} %</StyledCellData>
-      </StyledTableRow>
+      <ResultsTableMainData analysisResultsData={analysisResultsData} />
     </tbody>
-  </StyledResultsTable>
+  </StyledTable>
 );
 
 ResultsTable.propTypes = {
