@@ -28,6 +28,7 @@ const StyledTableRow = styled.tr`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
+  border-bottom: ${({ isAPS }) => (isAPS ? 'none' : '')};
 `;
 
 const StyledIndentedTableRow = styled(StyledTableRow)`
@@ -56,7 +57,7 @@ const StyledDailyValueCellData = styled(StyledCellData)`
 const ResultsTable = ({ analysisResultsData }) => (
   <StyledResultsTable>
     <StyledTableHeader>
-      <StyledTableRow>
+      <StyledTableRow isAPS>
         <StyledCellHeader>Amount Per Serving</StyledCellHeader>
       </StyledTableRow>
     </StyledTableHeader>
