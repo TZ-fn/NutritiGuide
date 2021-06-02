@@ -1,6 +1,6 @@
+/* eslint-disable */
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
-/* eslint-disable */
 
 const StyledTableElements = {
   StyledTable: styled.table`

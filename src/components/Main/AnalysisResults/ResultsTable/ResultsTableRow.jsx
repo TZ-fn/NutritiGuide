@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import StyledTableElements from './StyledTableElements';
-/* eslint-disable */
 
 const ResultsTableRow = ({ ingredientData, totalDailyData, isIndented }) => (
-  <StyledTableElements.StyledTableRow>
+  <StyledTableElements.StyledTableRow isIndented={isIndented}>
     <StyledTableElements.StyledCellData>
       <b>{ingredientData?.label}</b> {Math.round(ingredientData?.quantity.toFixed(1))}{' '}
       {ingredientData?.unit}
@@ -14,5 +14,21 @@ const ResultsTableRow = ({ ingredientData, totalDailyData, isIndented }) => (
     </StyledTableElements.StyledCellData>
   </StyledTableElements.StyledTableRow>
 );
+
+ResultsTableRow.propTypes = {
+  ingredientData: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array, PropTypes.object]),
+  ),
+  totalDailyData: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array, PropTypes.object]),
+  ),
+  isIndented: PropTypes.bool,
+};
+
+ResultsTableRow.defaultProps = {
+  ingredientData: {},
+  totalDailyData: {},
+  isIndented: false,
+};
 
 export default ResultsTableRow;
