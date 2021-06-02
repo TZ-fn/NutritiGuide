@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StyledTableElements from './StyledTableElements';
 
-const ResultsTableRow = ({ ingredientData, totalDailyData, isIndented }) => (
+const ResultsTableRow = ({ ingredientData, totalDailyData, isIndented, isBold, customLabel }) => (
   <StyledTableElements.StyledTableRow isIndented={isIndented}>
     <StyledTableElements.StyledCellData>
-      <b>{ingredientData?.label}</b> {Math.round(ingredientData?.quantity.toFixed(1))}{' '}
-      {ingredientData?.unit}
+      {isBold ? <b>{ingredientData?.label}</b> : ingredientData?.label}{' '}
+      {Math.round(ingredientData?.quantity.toFixed(1))} {ingredientData?.unit}
     </StyledTableElements.StyledCellData>
 
     <StyledTableElements.StyledCellData>
-      {Math.round(totalDailyData?.quantity)} %
+      <b>{Math.round(totalDailyData?.quantity)} %</b>
     </StyledTableElements.StyledCellData>
   </StyledTableElements.StyledTableRow>
 );
@@ -23,12 +23,16 @@ ResultsTableRow.propTypes = {
     PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array, PropTypes.object]),
   ),
   isIndented: PropTypes.bool,
+  isBold: PropTypes.bool,
+  customLabel: PropTypes.string,
 };
 
 ResultsTableRow.defaultProps = {
   ingredientData: {},
   totalDailyData: {},
   isIndented: false,
+  isBold: false,
+  customLabel: '',
 };
 
 export default ResultsTableRow;
