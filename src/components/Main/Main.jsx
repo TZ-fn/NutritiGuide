@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useContext } from 'react';
+import React, { useState, useReducer } from 'react';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
 import TextArea from 'components/common/TextArea';
@@ -10,7 +10,7 @@ import reducer from 'components/reducer/reducer';
 import AnalysisResults from './AnalysisResults/AnalysisResults';
 import fetchData from '../utils/fetchData';
 import encodeInput from '../utils/encodeInput';
-/* eslint-disable */
+
 const StyledMainWrapper = styled.main`
   width: auto;
   padding: 10px 20px;
@@ -65,11 +65,11 @@ const Main = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [state, dispatch] = useReducer(reducer, initialState);
-  const notificationsContext = useContext(state.notifications);
 
   const handleDataFetching = async (inputData) => {
-    // remove all error and warning notifications
+    // remove all error and warning notifications, clear the analysisResultsData
     dispatch({ type: 'CLEAR_ERRORS', payload: {} });
+    setAnalysisResultsData(null);
 
     // display an error when the input is empty
     if (!inputValue.trim()) {
@@ -83,7 +83,7 @@ const Main = () => {
     setIsLoading(true);
     const data = await fetchData(encodeInput(inputData));
 
-    // check for an empty response, the free version API won't send an error when any of the ingredients are invalid
+    // check for an empty response, the free version of the API won't send an error when any of the ingredients are invalid
     if (data.totalWeight === 0) {
       dispatch({ type: 'ADD_NOTIFICATION', payload: emptyResponseNotification });
       setIsLoading(false);
