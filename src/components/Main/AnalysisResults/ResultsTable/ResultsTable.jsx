@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import theme from 'theme/mainTheme';
-import ResultsTableMainData from './ResultsTableMainData';
-import StyledTableElements from './StyledTableElements';
+import ResultsTableMainData from './ResultsTableMainData/ResultsTableMainData';
+import StyledTableElements from './ResultsTableMainData/StyledTableElements';
 
 const StyledCaloriesCellHeader = styled(StyledTableElements.StyledCellHeader)`
   font-size: ${theme.fontSize.m};
@@ -22,6 +22,7 @@ const StyledDailyValueCellData = styled(StyledTableElements.StyledCellData)`
 `;
 
 const ResultsTable = ({ analysisResultsData }) => (
+  //  This is the hardcoded header markup for table
   <StyledTableElements.StyledTable>
     <StyledTableElements.StyledTableHeader>
       <StyledTableElements.StyledTableRow isAPS>
@@ -42,6 +43,7 @@ const ResultsTable = ({ analysisResultsData }) => (
         <StyledDailyValueCellData>% Daily Value*</StyledDailyValueCellData>
       </StyledTableElements.StyledTableRow>
 
+      {/* Main table data rows generated using the analysisResultsData and filtered by usedTableRows */}
       <ResultsTableMainData analysisResultsData={analysisResultsData} />
     </tbody>
   </StyledTableElements.StyledTable>
