@@ -12,7 +12,8 @@ const ResultsTableRow = ({ ingredientData, totalDailyData, isIndented, isBold, c
       </StyledTableElements.StyledCellData>
 
       <StyledTableElements.StyledCellData>
-        <b>{Math.round(totalDailyData?.quantity)} %</b>
+        {/* If the ingredient has no daily recommended value return a hyphen instead */}
+        <b>{totalDailyData?.quantity ? `${Math.round(totalDailyData?.quantity)} %` : '-'}</b>
       </StyledTableElements.StyledCellData>
     </StyledTableElements.StyledTableRow>
   );
