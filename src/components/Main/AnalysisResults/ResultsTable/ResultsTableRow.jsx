@@ -2,18 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StyledTableElements from './StyledTableElements';
 
-const ResultsTableRow = ({ ingredientData, totalDailyData, isIndented, isBold, customLabel }) => (
-  <StyledTableElements.StyledTableRow isIndented={isIndented}>
-    <StyledTableElements.StyledCellData>
-      {isBold ? <b>{ingredientData?.label}</b> : ingredientData?.label}{' '}
-      {Math.round(ingredientData?.quantity.toFixed(1))} {ingredientData?.unit}
-    </StyledTableElements.StyledCellData>
+const ResultsTableRow = ({ ingredientData, totalDailyData, isIndented, isBold, customLabel }) => {
+  const label = customLabel || ingredientData?.label;
+  return (
+    <StyledTableElements.StyledTableRow isIndented={isIndented}>
+      <StyledTableElements.StyledCellData>
+        {isBold ? <b>{label}</b> : label} {Math.round(ingredientData?.quantity.toFixed(1))}{' '}
+        {ingredientData?.unit}
+      </StyledTableElements.StyledCellData>
 
-    <StyledTableElements.StyledCellData>
-      <b>{Math.round(totalDailyData?.quantity)} %</b>
-    </StyledTableElements.StyledCellData>
-  </StyledTableElements.StyledTableRow>
-);
+      <StyledTableElements.StyledCellData>
+        <b>{Math.round(totalDailyData?.quantity)} %</b>
+      </StyledTableElements.StyledCellData>
+    </StyledTableElements.StyledTableRow>
+  );
+};
 
 ResultsTableRow.propTypes = {
   ingredientData: PropTypes.objectOf(

@@ -41,6 +41,7 @@ const ResultsTable = ({ analysisResultsData }) => (
         <StyledTableElements.StyledCellData />
         <StyledDailyValueCellData>% Daily Value*</StyledDailyValueCellData>
       </StyledTableElements.StyledTableRow>
+
       <ResultsTableMainData analysisResultsData={analysisResultsData} />
     </tbody>
   </StyledTableElements.StyledTable>
