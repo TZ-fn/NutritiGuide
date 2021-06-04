@@ -5,17 +5,27 @@ import StyledTableElements from './StyledTableElements';
 const ResultsTableRow = ({ ingredientData, totalDailyData, isIndented, isBold, customLabel }) => {
   const label = customLabel || ingredientData?.label;
   return (
-    <StyledTableElements.StyledTableRow isIndented={isIndented}>
-      <StyledTableElements.StyledCellData>
-        {isBold ? <b>{label}</b> : label} {Math.round(ingredientData?.quantity.toFixed(1))}{' '}
-        {ingredientData?.unit}
-      </StyledTableElements.StyledCellData>
+    <>
+      <StyledTableElements.StyledTableRow isIndented={isIndented}>
+        <StyledTableElements.StyledCellData>
+          {isBold ? <b>{label}</b> : label} {Math.round(ingredientData?.quantity.toFixed(1))}{' '}
+          {ingredientData?.unit}
+        </StyledTableElements.StyledCellData>
 
-      <StyledTableElements.StyledCellData>
-        {/* If the ingredient has no daily recommended value or it's not existent in the food analysed, return a hyphen instead */}
-        <b>{totalDailyData?.quantity ? `${Math.round(totalDailyData?.quantity)} %` : '-'}</b>
-      </StyledTableElements.StyledCellData>
-    </StyledTableElements.StyledTableRow>
+        <StyledTableElements.StyledCellData>
+          {/* If the ingredient has no daily recommended value or it's not existent in the food analysed, return a hyphen instead */}
+          <b>{totalDailyData?.quantity ? `${Math.round(totalDailyData?.quantity)} %` : '-'}</b>
+        </StyledTableElements.StyledCellData>
+      </StyledTableElements.StyledTableRow>
+      {/* Add a custom disclaimer about added sugars under the Sugars' row */}
+      {ingredientData.label === 'Sugars' && (
+        <StyledTableElements.StyledTableRow isIndented>
+          <StyledTableElements.StyledCellData>
+            Includes - Added Sugars
+          </StyledTableElements.StyledCellData>
+        </StyledTableElements.StyledTableRow>
+      )}
+    </>
   );
 };
 
