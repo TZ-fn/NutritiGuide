@@ -1,5 +1,5 @@
 // An object with all the properties used in the table as well as their configuration
-
+//
 // Initially I was thinking about making lists containing all the options e.g. isBold = [matching ingredients],
 // isIndented = [matching ingredients] etc., but making each ingredient as an object makes the scaling and making changes easier
 

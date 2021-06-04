@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useContext } from 'react';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
 import TextArea from 'components/common/TextArea';
@@ -6,7 +6,7 @@ import Button from 'components/common/Button';
 import NotificationsList from 'components/common/NotificationsList/NotificationsList';
 import { emptyInputNotification, emptyResponseNotification } from 'data/defaultNotifications';
 import initialState from 'data/initialState';
-import reducer from 'components/reducer/reducer';
+import rootReducer from 'components/reducer/reducer';
 import AnalysisResults from './AnalysisResults/AnalysisResults';
 import fetchData from '../utils/fetchData';
 import encodeInput from '../utils/encodeInput';
@@ -64,7 +64,7 @@ const Main = () => {
   const [analysisResultsData, setAnalysisResultsData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(rootReducer, initialState);
 
   const handleDataFetching = async (inputData) => {
     // remove all error and warning notifications, clear the analysisResultsData

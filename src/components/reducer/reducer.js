@@ -1,6 +1,6 @@
 import { ADD_NOTIFICATION, DELETE_NOTIFICATION, CLEAR_ERRORS } from './actions';
 
-function reducer(state, action) {
+function rootReducer(state, action) {
   switch (action.type) {
     case ADD_NOTIFICATION:
       return {
@@ -25,4 +25,4 @@ function reducer(state, action) {
   }
 }
 
-export default reducer;
+export default rootReducer;
