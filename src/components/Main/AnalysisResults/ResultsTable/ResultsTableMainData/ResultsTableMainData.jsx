@@ -7,7 +7,7 @@ const ResultsTableMainData = ({ analysisResultsData }) => (
   <>
     {usedTableRows.map((ingredient) => (
       <ResultsTableRow
-        key={ingredient}
+        key={ingredient.ingredientName}
         ingredientData={analysisResultsData.totalNutrients[ingredient.ingredientName]}
         totalDailyData={analysisResultsData.totalDaily[ingredient.ingredientName]}
         isIndented={ingredient.isIndented}
