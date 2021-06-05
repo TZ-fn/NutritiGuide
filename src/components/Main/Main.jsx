@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useContext } from 'react';
+import React, { useState, useReducer } from 'react';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
 import TextArea from 'components/common/TextArea';

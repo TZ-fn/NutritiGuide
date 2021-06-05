@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import StyledTableElements from './StyledTableElements';
 
 const ResultsTableRow = ({ ingredientData, totalDailyData, isIndented, isBold, customLabel }) => {
+  // use custom label for the ingredient if available
   const label = customLabel || ingredientData?.label;
   return (
     <>
