@@ -1,4 +1,4 @@
-import { ADD_NOTIFICATION, DELETE_NOTIFICATION, CLEAR_ERRORS } from './actions';
+import { ADD_NOTIFICATION, DELETE_NOTIFICATION, CLEAR_ERRORS, SET_LOADING } from './actions';
 
 function rootReducer(state, action) {
   switch (action.type) {
@@ -19,6 +19,10 @@ function rootReducer(state, action) {
             (notification) => notification.type !== 'warning' && notification.type !== 'error',
           ),
         ],
+      };
+    case SET_LOADING:
+      return {
+        isLoading: !state.isLoading,
       };
     default:
       return state;
