@@ -62,7 +62,6 @@ const StyledInputAreaWrapper = styled.section`
 
 const Main = () => {
   const [analysisResultsData, setAnalysisResultsData] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [state, dispatch] = useReducer(rootReducer, initialState);
 
@@ -77,21 +76,23 @@ const Main = () => {
         type: 'ADD_NOTIFICATION',
         payload: emptyInputNotification,
       });
+      dispatch({ type: 'SET_LOADING', payload: { isLoading: false } });
       return;
     }
 
-    setIsLoading(true);
+    dispatch({ type: 'SET_LOADING', payload: { isLoading: true } });
+
     const data = await fetchData(encodeInput(inputData));
 
     // check for an empty response, the free version of the API won't send an error when any of the ingredients are invalid
     if (data.totalWeight === 0) {
       dispatch({ type: 'ADD_NOTIFICATION', payload: emptyResponseNotification });
-      setIsLoading(false);
+      dispatch({ type: 'SET_LOADING', payload: { isLoading: false } });
       return;
     }
 
     setAnalysisResultsData(data);
-    setIsLoading(false);
+    dispatch({ type: 'SET_LOADING', payload: { isLoading: false } });
   };
 
   const handleNotificationDeleting = (notificationId) => {
@@ -118,7 +119,7 @@ const Main = () => {
             Analyse!
           </Button>
         </StyledInputAreaWrapper>
-        <AnalysisResults analysisResultsData={analysisResultsData} isLoading={isLoading} />
+        <AnalysisResults analysisResultsData={analysisResultsData} isLoading={state.isLoading} />
       </StyledFlexWrapper>
     </StyledMainWrapper>
   );
