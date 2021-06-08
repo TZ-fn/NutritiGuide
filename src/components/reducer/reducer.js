@@ -1,4 +1,10 @@
-import { ADD_NOTIFICATION, DELETE_NOTIFICATION, CLEAR_ERRORS, SET_LOADING } from './actions';
+import {
+  ADD_NOTIFICATION,
+  DELETE_NOTIFICATION,
+  CLEAR_ERRORS,
+  SET_LOADING,
+  SET_INPUT_VALUE,
+} from './actions';
 
 function rootReducer(state, action) {
   switch (action.type) {
@@ -26,7 +32,12 @@ function rootReducer(state, action) {
     case SET_LOADING:
       return {
         ...state,
-        isLoading: action.payload.isLoading,
+        isLoading: action.payload,
+      };
+    case SET_INPUT_VALUE:
+      return {
+        ...state,
+        inputValue: action.payload,
       };
     default:
       return state;
