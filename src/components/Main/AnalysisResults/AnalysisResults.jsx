@@ -48,7 +48,7 @@ const StyledDailyValuesInfo = styled.p`
 `;
 
 const AnalysisResults = ({ analysisResultsData, isLoading }) => {
-  if (!isLoading && !analysisResultsData) {
+  if (!isLoading && !analysisResultsData.calories) {
     return (
       <StyledWrapper>
         <Heading HeadingLevel='h2'>Nutrition Facts</Heading>

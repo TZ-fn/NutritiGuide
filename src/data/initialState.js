@@ -1,9 +1,10 @@
 import { initialNotification } from 'data/defaultNotifications';
 
 const initialState = {
-  notifications: [initialNotification],
-  isLoading: false,
   inputValue: '',
+  isLoading: false,
+  notifications: [initialNotification],
+  analysisResultsData: {},
 };
 
 export default initialState;

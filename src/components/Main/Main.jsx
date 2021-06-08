@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
 import TextArea from 'components/common/TextArea';
@@ -61,13 +61,12 @@ const StyledInputAreaWrapper = styled.section`
 `;
 
 const Main = () => {
-  const [analysisResultsData, setAnalysisResultsData] = useState(null);
   const [state, dispatch] = useReducer(rootReducer, initialState);
 
   const handleDataFetching = async (inputValue) => {
     // remove all error and warning notifications, clear the analysisResultsData
     dispatch({ type: 'CLEAR_ERRORS', payload: {} });
-    setAnalysisResultsData(null);
+    dispatch({ type: 'SET_ANALYSIS_RESULTS_DATA', payload: {} });
 
     // display an error when the input is empty
     if (!state.inputValue.trim()) {
@@ -80,7 +79,6 @@ const Main = () => {
     }
 
     dispatch({ type: 'SET_LOADING', payload: true });
-
     const data = await fetchData(encodeInput(inputValue));
 
     // check for an empty response, the free version of the API won't send an error when any of the ingredients are invalid
@@ -90,7 +88,7 @@ const Main = () => {
       return;
     }
 
-    setAnalysisResultsData(data);
+    dispatch({ type: 'SET_ANALYSIS_RESULTS_DATA', payload: data });
     dispatch({ type: 'SET_LOADING', payload: false });
   };
 
@@ -118,7 +116,10 @@ const Main = () => {
             Analyse!
           </Button>
         </StyledInputAreaWrapper>
-        <AnalysisResults analysisResultsData={analysisResultsData} isLoading={state.isLoading} />
+        <AnalysisResults
+          analysisResultsData={state.analysisResultsData}
+          isLoading={state.isLoading}
+        />
       </StyledFlexWrapper>
     </StyledMainWrapper>
   );

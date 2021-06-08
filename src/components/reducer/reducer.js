@@ -4,6 +4,7 @@ import {
   CLEAR_ERRORS,
   SET_LOADING,
   SET_INPUT_VALUE,
+  SET_ANALYSIS_RESULTS_DATA,
 } from './actions';
 
 function rootReducer(state, action) {
@@ -38,6 +39,11 @@ function rootReducer(state, action) {
       return {
         ...state,
         inputValue: action.payload,
+      };
+    case SET_ANALYSIS_RESULTS_DATA:
+      return {
+        ...state,
+        analysisResultsData: { ...action.payload },
       };
     default:
       return state;
