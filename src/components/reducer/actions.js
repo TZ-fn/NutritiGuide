@@ -14,26 +14,8 @@ export const SET_ANALYSIS_RESULTS_DATA = 'SET_ANALYSIS_RESULTS_DATA';
 
 const MAIN_API = `https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&ingr=`;
 
-export const fetchNutritionData = async (inputData, dispatch) => {
-  let response = await fetch(`${MAIN_API}${inputData}`);
-
-  if (response.status === 200) {
-    return response.json();
-  }
-
-  response = await response.json();
-  return dispatch({
-    type: 'ADD_NOTIFICATION',
-    payload: {
-      id: 'error',
-      type: 'error',
-      children: `${response.error} ${response.message} Please try again.`,
-    },
-  });
-};
-
 export const handleDataFetching = async (state, dispatch) => {
-  // remove all error and warning notifications, clear the analysisResultsData
+  // remove all error and warning notifications, clear the ResultsTable
   dispatch({ type: 'CLEAR_ERRORS', payload: {} });
   dispatch({ type: 'SET_ANALYSIS_RESULTS_DATA', payload: {} });
 
@@ -47,16 +29,32 @@ export const handleDataFetching = async (state, dispatch) => {
     return;
   }
 
+  // fetch for the data
   dispatch({ type: 'SET_LOADING', payload: true });
-  const data = await fetchNutritionData(encodeInput(state.inputValue), dispatch);
+  let response = await fetch(`${MAIN_API}${encodeInput(state.inputValue)}`);
+  if (response.status === 200) {
+    dispatch({ type: 'SET_LOADING', payload: false });
+    response = await response.json();
+  } else {
+    // on server error add a new notification
+    response = await response.json();
+    dispatch({ type: 'SET_LOADING', payload: false });
+    dispatch({
+      type: 'ADD_NOTIFICATION',
+      payload: {
+        id: 'error',
+        type: 'error',
+        children: `${response.error} ${response.message} Please try again.`,
+      },
+    });
+  }
 
   // check for an empty response, the free version of the API won't send an error when any of the ingredients are invalid
-  if (data?.totalWeight === 0) {
+  if (response?.totalWeight === 0) {
     dispatch({ type: 'ADD_NOTIFICATION', payload: emptyResponseNotification });
     dispatch({ type: 'SET_LOADING', payload: false });
     return;
   }
 
-  dispatch({ type: 'SET_ANALYSIS_RESULTS_DATA', payload: data });
-  dispatch({ type: 'SET_LOADING', payload: false });
+  dispatch({ type: 'SET_ANALYSIS_RESULTS_DATA', payload: response });
 };
