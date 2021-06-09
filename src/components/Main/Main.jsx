@@ -4,12 +4,10 @@ import theme from 'theme/mainTheme';
 import TextArea from 'components/common/TextArea';
 import Button from 'components/common/Button';
 import NotificationsList from 'components/common/NotificationsList/NotificationsList';
-import { emptyInputNotification, emptyResponseNotification } from 'data/defaultNotifications';
 import initialState from 'data/initialState';
 import rootReducer from 'components/reducer/reducer';
+import { handleDataFetching } from 'components/reducer/actions';
 import AnalysisResults from './AnalysisResults/AnalysisResults';
-import fetchData from '../utils/fetchData';
-import encodeInput from '../utils/encodeInput';
 
 const StyledMainWrapper = styled.main`
   width: auto;
@@ -63,35 +61,6 @@ const StyledInputAreaWrapper = styled.section`
 const Main = () => {
   const [state, dispatch] = useReducer(rootReducer, initialState);
 
-  const handleDataFetching = async (inputValue) => {
-    // remove all error and warning notifications, clear the analysisResultsData
-    dispatch({ type: 'CLEAR_ERRORS', payload: {} });
-    dispatch({ type: 'SET_ANALYSIS_RESULTS_DATA', payload: {} });
-
-    // display an error when the input is empty
-    if (!state.inputValue.trim()) {
-      dispatch({
-        type: 'ADD_NOTIFICATION',
-        payload: emptyInputNotification,
-      });
-      dispatch({ type: 'SET_LOADING', payload: false });
-      return;
-    }
-
-    dispatch({ type: 'SET_LOADING', payload: true });
-    const data = await fetchData(encodeInput(inputValue));
-
-    // check for an empty response, the free version of the API won't send an error when any of the ingredients are invalid
-    if (data.totalWeight === 0) {
-      dispatch({ type: 'ADD_NOTIFICATION', payload: emptyResponseNotification });
-      dispatch({ type: 'SET_LOADING', payload: false });
-      return;
-    }
-
-    dispatch({ type: 'SET_ANALYSIS_RESULTS_DATA', payload: data });
-    dispatch({ type: 'SET_LOADING', payload: false });
-  };
-
   const handleNotificationDeleting = (notificationId) => {
     dispatch({ type: 'DELETE_NOTIFICATION', payload: notificationId });
   };
@@ -112,7 +81,7 @@ const Main = () => {
             onChange={(e) => handleInputValue(e.target.value)}
             placeholder='Enter your ingredient list...'
           />
-          <Button onClick={() => handleDataFetching(state.inputValue)} type='button'>
+          <Button onClick={() => handleDataFetching(state, dispatch)} type='button'>
             Analyse!
           </Button>
         </StyledInputAreaWrapper>
