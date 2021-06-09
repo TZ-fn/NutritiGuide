@@ -20,15 +20,14 @@ export const fetchNutritionData = async (inputData, dispatch) => {
   if (response.status === 200) {
     return response.json();
   }
+
   response = await response.json();
   return dispatch({
     type: 'ADD_NOTIFICATION',
     payload: {
       id: 'error',
       type: 'error',
-      children: `${response.error}
-      ${response.message}
-      `,
+      children: `${response.error} ${response.message} Please try again.`,
     },
   });
 };
