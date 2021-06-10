@@ -1,12 +1,13 @@
 import React, { useReducer } from 'react';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
-import TextArea from 'components/common/TextArea';
-import Button from 'components/common/Button';
-import NotificationsList from 'components/common/NotificationsList/NotificationsList';
 import initialState from 'data/initialState';
 import rootReducer from 'components/reducer/reducer';
 import { handleDataFetching } from 'components/reducer/actions';
+import NotificationsList from 'components/common/NotificationsList/NotificationsList';
+import TextArea from 'components/common/TextArea';
+import Button from 'components/common/Button';
+import AnalysisOptions from './AnalysisOptions/AnalysisOptions';
 import AnalysisResults from './AnalysisResults/AnalysisResults';
 
 const StyledMainWrapper = styled.main`
@@ -84,6 +85,7 @@ const Main = () => {
           <Button onClick={() => handleDataFetching(state, dispatch)} type='button'>
             Analyse!
           </Button>
+          <AnalysisOptions />
         </StyledInputAreaWrapper>
         <AnalysisResults
           analysisResultsData={state.analysisResultsData}
