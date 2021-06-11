@@ -6,10 +6,9 @@ const StyledAnalysisOptionsContainer = styled.div``;
 
 const AnalysisOptions = () => (
   <StyledAnalysisOptionsContainer>
-    <Checkbox />
-    <Checkbox />
-    <Checkbox />
-    <Checkbox />
+    <Checkbox name='proteins' />
+    <Checkbox name='fats' />
+    <Checkbox name='carbs' />
   </StyledAnalysisOptionsContainer>
 );
 

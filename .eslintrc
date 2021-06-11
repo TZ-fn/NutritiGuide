@@ -16,7 +16,17 @@
     "react/state-in-constructor": 0,
     "no-underscore-dangle": "off",
     "react/jsx-props-no-spreading": "off",
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelComponents": ["CustomLabel"],
+        "labelAttributes": ["inputLabel"],
+        "controlComponents": ["CustomInput"],
+        "assert": "either",
+        "depth": 3
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
