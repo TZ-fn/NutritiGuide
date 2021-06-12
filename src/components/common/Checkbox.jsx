@@ -12,6 +12,7 @@ const StyledCheckbox = styled.input`
   border-radius: 3px;
   display: inline-block;
   position: relative;
+  margin: 10px 3px;
 
   &:active,
   &:active {
@@ -36,11 +37,15 @@ const StyledCheckbox = styled.input`
   }
 `;
 
+const StyledLabel = styled.label`
+  margin: 10px 3px 10px 15px;
+`;
+
 const Checkbox = ({ name }) => (
-  <label htmlFor={name}>
-    {name}
+  <>
+    <StyledLabel htmlFor={name}>{name}</StyledLabel>
     <StyledCheckbox type='checkbox' name={name} id={name} />
-  </label>
+  </>
 );
 
 Checkbox.propTypes = {
