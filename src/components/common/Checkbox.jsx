@@ -29,10 +29,10 @@ const StyledCheckbox = styled.input`
 
   &:checked:after {
     content: '✔';
-    font-size: 25px;
+    font-size: 27px;
     position: absolute;
-    top: -11px;
-    left: 0px;
+    top: -12px;
+    left: -1px;
     color: ${theme.accentDarkGreen};
   }
 `;
@@ -41,15 +41,16 @@ const StyledLabel = styled.label`
   margin: 10px 3px 10px 15px;
 `;
 
-const Checkbox = ({ name }) => (
+const Checkbox = ({ name, id }) => (
   <>
     <StyledLabel htmlFor={name}>{name}</StyledLabel>
-    <StyledCheckbox type='checkbox' name={name} id={name} />
+    <StyledCheckbox type='checkbox' name={name} id={id} />
   </>
 );
 
 Checkbox.propTypes = {
   name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Checkbox;
