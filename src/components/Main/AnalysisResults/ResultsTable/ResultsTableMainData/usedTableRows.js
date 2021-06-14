@@ -17,6 +17,18 @@ const usedTableRows = [
     isIndented: true,
   },
   {
+    ingredientName: 'FAMS',
+    customLabel: 'Monounsaturated Fat',
+    isBold: false,
+    isIndented: true,
+  },
+  {
+    ingredientName: 'FAPU',
+    customLabel: 'Polyunsaturated Fat',
+    isBold: false,
+    isIndented: true,
+  },
+  {
     ingredientName: 'FATRN',
     customLabel: 'Trans Fat',
     isBold: false,
@@ -55,30 +67,6 @@ const usedTableRows = [
     ingredientName: 'PROCNT',
     customLabel: '',
     isBold: true,
-    isIndented: false,
-  },
-  {
-    ingredientName: 'VITD',
-    customLabel: '',
-    isBold: false,
-    isIndented: false,
-  },
-  {
-    ingredientName: 'CA',
-    customLabel: '',
-    isBold: false,
-    isIndented: false,
-  },
-  {
-    ingredientName: 'FE',
-    customLabel: '',
-    isBold: false,
-    isIndented: false,
-  },
-  {
-    ingredientName: 'K',
-    customLabel: '',
-    isBold: false,
     isIndented: false,
   },
 ];

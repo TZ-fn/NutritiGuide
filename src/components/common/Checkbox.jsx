@@ -12,7 +12,7 @@ const StyledCheckbox = styled.input`
   border-radius: 3px;
   display: inline-block;
   position: relative;
-  margin: 10px 3px;
+  margin: 10px 2px;
 
   &:active,
   &:active {
@@ -38,14 +38,22 @@ const StyledCheckbox = styled.input`
 `;
 
 const StyledLabel = styled.label`
-  margin: 10px 3px 10px 15px;
+  margin: 10px 3px 10px 10px;
+`;
+
+const StyleInnerContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Checkbox = ({ name, id }) => (
-  <>
-    <StyledLabel htmlFor={name}>{name}</StyledLabel>
+  <StyleInnerContainer>
+    <StyledLabel htmlFor={id}>{name}</StyledLabel>
     <StyledCheckbox type='checkbox' name={name} id={id} />
-  </>
+  </StyleInnerContainer>
 );
 
 Checkbox.propTypes = {
