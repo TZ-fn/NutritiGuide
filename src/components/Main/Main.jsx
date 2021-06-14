@@ -11,7 +11,7 @@ import AnalysisOptions from './AnalysisOptions/AnalysisOptions';
 import AnalysisResults from './AnalysisResults/AnalysisResults';
 
 const StyledMainWrapper = styled.main`
-  width: auto;
+  width: 100%;
   padding: 10px 20px;
   border-radius: 10px;
   display: flex;
