@@ -13,6 +13,7 @@ const StyledNotificationBox = styled.li`
   margin-bottom: 10px;
   padding: 15px 40px;
   min-width: 328px;
+  max-width: 860px;
   border: 2px solid ${({ type }) => setHslaColor(type, 'border')};
   border-left: 10px solid ${({ type }) => setHslaColor(type, 'border')};
   border-radius: 3px;

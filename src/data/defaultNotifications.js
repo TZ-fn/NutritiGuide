@@ -2,7 +2,7 @@ export const initialNotification = {
   id: 'defaultNotification',
   type: 'info',
   children:
-    'Enter your food\'s ingredients, each ingredient on a new line, then press the "Analyse" button.',
+    'Enter your food\'s ingredients, each ingredient on a new line, decide what ingredients do you want to view, then press the "Analyse" button.',
 };
 
 export const emptyInputNotification = {
