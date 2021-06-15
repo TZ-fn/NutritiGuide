@@ -5,14 +5,15 @@ import theme from 'theme/mainTheme';
 
 const StyledCheckbox = styled.input`
   -webkit-appearance: none;
+  margin: 0;
   background-color: #fafafa;
   border: 1px solid #cacece;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
-  padding: 9px;
+  margin-right: -2px;
+  padding: 12px;
   border-radius: 3px;
   display: inline-block;
   position: relative;
-  margin: 10px 2px;
 
   &:active,
   &:active {
@@ -29,16 +30,17 @@ const StyledCheckbox = styled.input`
 
   &:checked:after {
     content: '✔';
-    font-size: 27px;
+    font-size: 30px;
     position: absolute;
-    top: -12px;
-    left: -1px;
+    top: -9px;
+    left: 0;
     color: ${theme.accentDarkGreen};
   }
 `;
 
 const StyledLabel = styled.label`
-  margin: 10px 3px 10px 10px;
+  padding: 0.21rem 0.5rem;
+  margin-left: -2px;
 `;
 
 const StyleInnerContainer = styled.div`
@@ -47,12 +49,21 @@ const StyleInnerContainer = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  border-radius: 3px;
+  overflow: hidden;
+  width: max-content;
+  margin: 5px 3px;
+
+  & input[type='checkbox']:checked + label {
+    color: white;
+    background-color: ${theme.accentDarkGreen};
+  }
 `;
 
 const Checkbox = ({ name, id }) => (
   <StyleInnerContainer>
-    <StyledLabel htmlFor={id}>{name}</StyledLabel>
     <StyledCheckbox type='checkbox' name={name} id={id} />
+    <StyledLabel htmlFor={id}>{name}</StyledLabel>
   </StyleInnerContainer>
 );
 
