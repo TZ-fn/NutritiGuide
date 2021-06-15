@@ -52,7 +52,7 @@ const StyleInnerContainer = styled.div`
   border-radius: 3px;
   overflow: hidden;
   width: max-content;
-  margin: 5px 3px;
+  margin: 7px 4px;
 
   & input[type='checkbox']:checked + label {
     color: white;
