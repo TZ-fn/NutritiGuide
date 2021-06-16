@@ -48,7 +48,7 @@ const StyledDailyValuesInfo = styled.p`
   font-size: ${theme.fontSize.x4s};
 `;
 
-const AnalysisResults = ({ analysisResultsData, isLoading }) => {
+const AnalysisResults = ({ analysisResultsData, isLoading, usedTableRows }) => {
   if (!isLoading && !analysisResultsData?.calories) {
     return (
       <StyledWrapper>
@@ -64,7 +64,7 @@ const AnalysisResults = ({ analysisResultsData, isLoading }) => {
   ) : (
     <StyledWrapper>
       <Heading HeadingLevel='h2'>Nutrition Facts</Heading>
-      <ResultsTable analysisResultsData={analysisResultsData} />
+      <ResultsTable analysisResultsData={analysisResultsData} usedTableRows={usedTableRows} />
       <StyledDailyValuesInfo>
         * Percent Daily Values are based on a 2,000 calorie diet.
       </StyledDailyValuesInfo>
@@ -77,6 +77,7 @@ AnalysisResults.propTypes = {
     PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array, PropTypes.object]),
   ),
   isLoading: PropTypes.bool.isRequired,
+  usedTableRows: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 AnalysisResults.defaultProps = {
