@@ -9,8 +9,10 @@ const ResultsTableRow = ({ ingredientData, totalDailyData, isIndented, isBold, c
     <>
       <StyledTableElements.StyledTableRow isIndented={isIndented}>
         <StyledTableElements.StyledCellData>
-          {isBold ? <b>{label}</b> : label} {Math.round(ingredientData?.quantity.toFixed(1))}{' '}
-          {ingredientData?.unit}
+          {isBold ? <b>{label}</b> : label}{' '}
+          {ingredientData?.quantity
+            ? `${ingredientData?.quantity.toFixed(1)} ${ingredientData?.unit}`
+            : ''}{' '}
         </StyledTableElements.StyledCellData>
 
         <StyledTableElements.StyledCellData>
