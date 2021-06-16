@@ -11,36 +11,37 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
 export const SET_LOADING = 'SET_LOADING';
 export const SET_ANALYSIS_RESULTS_DATA = 'SET_ANALYSIS_RESULTS_DATA';
+export const SET_CUSTOM_INGREDIENTS = 'SET_CUSTOM_INGREDIENTS';
 
 const MAIN_API = `https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&ingr=`;
 
 export const handleDataFetching = async (state, dispatch) => {
   // remove all error and warning notifications, clear the ResultsTable
-  dispatch({ type: 'CLEAR_ERRORS', payload: {} });
-  dispatch({ type: 'SET_ANALYSIS_RESULTS_DATA', payload: {} });
+  dispatch({ type: CLEAR_ERRORS, payload: {} });
+  dispatch({ type: SET_ANALYSIS_RESULTS_DATA, payload: {} });
 
   // display an error when the input is empty
   if (!state.inputValue.trim()) {
     dispatch({
-      type: 'ADD_NOTIFICATION',
+      type: ADD_NOTIFICATION,
       payload: emptyInputNotification,
     });
-    dispatch({ type: 'SET_LOADING', payload: false });
+    dispatch({ type: SET_LOADING, payload: false });
     return;
   }
 
   // fetch for the data
-  dispatch({ type: 'SET_LOADING', payload: true });
+  dispatch({ type: SET_LOADING, payload: true });
   let response = await fetch(`${MAIN_API}${encodeInput(state.inputValue)}`);
   if (response.status === 200) {
-    dispatch({ type: 'SET_LOADING', payload: false });
+    dispatch({ type: SET_LOADING, payload: false });
     response = await response.json();
   } else {
     // on server error add a new notification
     response = await response.json();
-    dispatch({ type: 'SET_LOADING', payload: false });
+    dispatch({ type: SET_LOADING, payload: false });
     dispatch({
-      type: 'ADD_NOTIFICATION',
+      type: ADD_NOTIFICATION,
       payload: {
         id: 'error',
         type: 'error',
@@ -51,10 +52,10 @@ export const handleDataFetching = async (state, dispatch) => {
 
   // check for an empty response, the free version of the API won't send an error when any of the ingredients are invalid
   if (response?.totalWeight === 0) {
-    dispatch({ type: 'ADD_NOTIFICATION', payload: emptyResponseNotification });
-    dispatch({ type: 'SET_LOADING', payload: false });
+    dispatch({ type: ADD_NOTIFICATION, payload: emptyResponseNotification });
+    dispatch({ type: SET_LOADING, payload: false });
     return;
   }
-
-  dispatch({ type: 'SET_ANALYSIS_RESULTS_DATA', payload: response });
+  dispatch({ type: SET_CUSTOM_INGREDIENTS, payload: response });
+  dispatch({ type: SET_ANALYSIS_RESULTS_DATA, payload: response });
 };
