@@ -8,17 +8,23 @@ const APP_KEY = process.env.REACT_APP_APP_KEY;
 export const ADD_NOTIFICATION = 'ADD_NOTIFICATION';
 export const DELETE_NOTIFICATION = 'DELETE_NOTIFICATION';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
 export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
+
 export const SET_LOADING = 'SET_LOADING';
+
 export const SET_ANALYSIS_RESULTS_DATA = 'SET_ANALYSIS_RESULTS_DATA';
-export const SET_CUSTOM_INGREDIENTS = 'SET_CUSTOM_INGREDIENTS';
+
+export const RESET_CHECKED_INGREDIENTS = 'RESET_CHECKED_INGREDIENTS';
+export const SET_CHECKED_INGREDIENTS = 'SET_CHECKED_INGREDIENTS';
 
 const MAIN_API = `https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&ingr=`;
 
-export const handleDataFetching = async (state, dispatch) => {
+export const handleDataFetching = async (state, dispatch, checkedIngredients) => {
   // remove all error and warning notifications, clear the ResultsTable
   dispatch({ type: CLEAR_ERRORS, payload: {} });
   dispatch({ type: SET_ANALYSIS_RESULTS_DATA, payload: {} });
+  dispatch({ type: RESET_CHECKED_INGREDIENTS, payload: {} });
 
   // display an error when the input is empty
   if (!state.inputValue.trim()) {
@@ -56,6 +62,11 @@ export const handleDataFetching = async (state, dispatch) => {
     dispatch({ type: SET_LOADING, payload: false });
     return;
   }
-  dispatch({ type: SET_CUSTOM_INGREDIENTS, payload: response });
+
+  // filter the table ingredients by the there are any selected checkboxes
+  if (checkedIngredients.length > 0) {
+    dispatch({ type: SET_CHECKED_INGREDIENTS, payload: checkedIngredients });
+  }
+
   dispatch({ type: SET_ANALYSIS_RESULTS_DATA, payload: response });
 };
