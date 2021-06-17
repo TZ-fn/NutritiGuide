@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import formatNumber from 'components/utils/formatNumber';
 import StyledTableElements from './StyledTableElements';
 
 const ResultsTableRow = ({ ingredientData, totalDailyData, isIndented, isBold, customLabel }) => {
@@ -11,13 +12,13 @@ const ResultsTableRow = ({ ingredientData, totalDailyData, isIndented, isBold, c
         <StyledTableElements.StyledCellData>
           {isBold ? <b>{label}</b> : label}{' '}
           {ingredientData?.quantity
-            ? `${ingredientData?.quantity.toFixed(1)} ${ingredientData?.unit}`
-            : ''}{' '}
+            ? `${formatNumber(ingredientData?.quantity)} ${ingredientData?.unit}`
+            : '-'}{' '}
         </StyledTableElements.StyledCellData>
 
         <StyledTableElements.StyledCellData>
           {/* If the ingredient has no daily recommended value or it's not existent in the food analysed, return a hyphen instead */}
-          <b>{totalDailyData?.quantity ? `${Math.round(totalDailyData?.quantity)} %` : '-'}</b>
+          <b>{totalDailyData?.quantity ? `${formatNumber(totalDailyData?.quantity)} %` : '-'}</b>
         </StyledTableElements.StyledCellData>
       </StyledTableElements.StyledTableRow>
       {/* Add a custom disclaimer about added sugars under the Sugars' row */}
