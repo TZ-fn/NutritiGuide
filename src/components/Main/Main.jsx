@@ -1,8 +1,7 @@
-import React, { useReducer } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
-import initialState from 'data/initialState';
-import rootReducer from 'components/reducer/reducer';
+import MainContext from 'components/Context/MainContext';
 import { handleDataFetching } from 'components/reducer/actions';
 import NotificationsList from 'components/common/NotificationsList/NotificationsList';
 import TextArea from 'components/common/TextArea';
@@ -60,7 +59,7 @@ const StyledInputAreaWrapper = styled.section`
 `;
 
 const Main = () => {
-  const [state, dispatch] = useReducer(rootReducer, initialState);
+  const { state, dispatch } = useContext(MainContext);
 
   const handleNotificationDeleting = (notificationId) => {
     dispatch({ type: 'DELETE_NOTIFICATION', payload: notificationId });
