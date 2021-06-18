@@ -21,7 +21,7 @@ const StyledDailyValueCellData = styled(StyledTableElements.StyledCellData)`
   font-size: ${theme.fontSize.x4s};
 `;
 
-const ResultsTable = ({ analysisResultsData, usedTableRows }) => (
+const ResultsTable = ({ analysisResultsData }) => (
   //  This is the hardcoded header markup for table
   <StyledTableElements.StyledTable>
     <StyledTableElements.StyledTableHeader>
@@ -44,10 +44,7 @@ const ResultsTable = ({ analysisResultsData, usedTableRows }) => (
       </StyledTableElements.StyledTableRow>
 
       {/* Main table data rows generated using the analysisResultsData and filtered by usedTableRows */}
-      <ResultsTableMainData
-        analysisResultsData={analysisResultsData}
-        usedTableRows={usedTableRows}
-      />
+      <ResultsTableMainData analysisResultsData={analysisResultsData} />
     </tbody>
   </StyledTableElements.StyledTable>
 );
@@ -56,7 +53,6 @@ ResultsTable.propTypes = {
   analysisResultsData: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array, PropTypes.object]),
   ),
-  usedTableRows: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 ResultsTable.defaultProps = {

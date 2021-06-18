@@ -98,7 +98,6 @@ const Main = () => {
         </StyledInputAreaWrapper>
         <AnalysisResults
           analysisResultsData={state.analysisResultsData}
-          usedTableRows={state.usedTableRows}
           isLoading={state.isLoading}
         />
       </StyledFlexWrapper>

@@ -13,7 +13,7 @@ const StyledWrapper = styled.section`
   height: max-content;
   margin: 10px 35px;
   padding: 0 20px;
-  border: 1px solid black;
+  border: 1px solid hsla(0, 0%, 0%, 0.3);
   border-radius: 3px;
   background-color: white;
   box-shadow: hsla(0, 0%, 0%, 0.2) 2px 2px 5px;
@@ -48,7 +48,7 @@ const StyledDailyValuesInfo = styled.p`
   font-size: ${theme.fontSize.x4s};
 `;
 
-const AnalysisResults = ({ analysisResultsData, isLoading, usedTableRows }) => {
+const AnalysisResults = ({ analysisResultsData, isLoading }) => {
   if (!isLoading && !analysisResultsData?.calories) {
     return (
       <StyledWrapper>
@@ -64,7 +64,7 @@ const AnalysisResults = ({ analysisResultsData, isLoading, usedTableRows }) => {
   ) : (
     <StyledWrapper>
       <Heading HeadingLevel='h2'>Nutrition Facts</Heading>
-      <ResultsTable analysisResultsData={analysisResultsData} usedTableRows={usedTableRows} />
+      <ResultsTable analysisResultsData={analysisResultsData} />
       <StyledDailyValuesInfo>
         * Percent Daily Values are based on a 2,000 calorie diet.
       </StyledDailyValuesInfo>
@@ -77,7 +77,6 @@ AnalysisResults.propTypes = {
     PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array, PropTypes.object]),
   ),
   isLoading: PropTypes.bool.isRequired,
-  usedTableRows: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 AnalysisResults.defaultProps = {
