@@ -13,7 +13,7 @@ const StyledWrapper = styled.section`
   height: max-content;
   margin: 10px 35px;
   padding: 0 20px;
-  border: 1px solid hsla(0, 0%, 0%, 0.3);
+  border: ${theme.defaultBorder};
   border-radius: 3px;
   background-color: white;
   box-shadow: hsla(0, 0%, 0%, 0.2) 2px 2px 5px;

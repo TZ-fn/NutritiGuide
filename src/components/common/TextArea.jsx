@@ -8,6 +8,7 @@ const StyledTextArea = styled.textarea`
   max-width: 400px;
   min-height: 235px;
   padding: 15px 15px;
+  border: ${theme.defaultBorder};
   border-radius: 3px;
   box-shadow: hsla(0, 0%, 0%, 0.2) 2px 2px 5px;
   font-size: ${theme.fontSize.x2s};

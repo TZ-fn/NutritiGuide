@@ -6,6 +6,7 @@ const theme = {
   grey200: 'hsl(0, 0%, 90%)',
   grey300: 'hsl(0, 0%, 70%)',
   black: 'hsl(0, 0%, 0%)',
+  defaultBorder: '1px solid hsla(0, 0%, 0%, 0.4);',
   messageBoxColors: {
     info: '198, 93%, 49%',
     warning: '36, 89%, 54%',

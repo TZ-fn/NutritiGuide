@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import theme from 'theme/mainTheme';
 import Checkbox from 'components/common/Checkbox';
 
 const StyledContainer = styled.div`
@@ -11,7 +12,7 @@ const StyledContainer = styled.div`
   min-width: 328px;
   max-width: 400px;
   padding: 0.8rem 1rem;
-  border: 1px solid black;
+  border: ${theme.defaultBorder};
   border-radius: 3px;
   box-shadow: hsla(0, 0%, 0%, 0.2) 2px 2px 5px;
   background-color: white;
