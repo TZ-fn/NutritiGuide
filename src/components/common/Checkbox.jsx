@@ -60,9 +60,9 @@ const StyleInnerContainer = styled.div`
   }
 `;
 
-const Checkbox = ({ name, id }) => (
+const Checkbox = ({ name, id, onChange }) => (
   <StyleInnerContainer>
-    <StyledCheckbox type='checkbox' name={name} id={id} />
+    <StyledCheckbox type='checkbox' name={name} id={id} onChange={onChange} />
     <StyledLabel htmlFor={id}>{name}</StyledLabel>
   </StyleInnerContainer>
 );
@@ -70,6 +70,7 @@ const Checkbox = ({ name, id }) => (
 Checkbox.propTypes = {
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Checkbox;

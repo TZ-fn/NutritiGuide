@@ -18,9 +18,11 @@ export const SET_ANALYSIS_RESULTS_DATA = 'SET_ANALYSIS_RESULTS_DATA';
 export const RESET_CHECKED_INGREDIENTS = 'RESET_CHECKED_INGREDIENTS';
 export const SET_CHECKED_INGREDIENTS = 'SET_CHECKED_INGREDIENTS';
 
+export const CHANGE_CHECKBOX_VALUE = 'CHANGE_CHECKBOX_VALUE';
+
 const MAIN_API = `https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&ingr=`;
 
-export const handleDataFetching = async (state, dispatch, checkedIngredients) => {
+export const handleDataFetching = async (state, dispatch) => {
   // remove all error and warning notifications, clear the ResultsTable
   dispatch({ type: CLEAR_ERRORS, payload: {} });
   dispatch({ type: SET_ANALYSIS_RESULTS_DATA, payload: {} });
@@ -63,10 +65,10 @@ export const handleDataFetching = async (state, dispatch, checkedIngredients) =>
     return;
   }
 
-  // filter the table ingredients by the there are any selected checkboxes
-  if (checkedIngredients.length > 0) {
-    dispatch({ type: SET_CHECKED_INGREDIENTS, payload: checkedIngredients });
-  }
+  // // filter the table ingredients by the there are any selected checkboxes
+  // if (checkedIngredients.length > 0) {
+  //   dispatch({ type: SET_CHECKED_INGREDIENTS, payload: checkedIngredients });
+  // }
 
   dispatch({ type: SET_ANALYSIS_RESULTS_DATA, payload: response });
 };

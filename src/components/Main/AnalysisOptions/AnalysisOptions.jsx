@@ -1,7 +1,9 @@
-import React from 'react';
+/* eslint-disable */
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
 import Checkbox from 'components/common/Checkbox';
+import MainContext from 'components/Context/MainContext';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -24,27 +26,52 @@ const StyledContainer = styled.div`
   }
 `;
 
-const AnalysisOptions = () => (
-  <StyledContainer>
-    <Checkbox name='Vitamin A' id='VITA_RAE' />
-    <Checkbox name='Vitamin C' id='VITC' />
-    <Checkbox name='Thiamin (B1)' id='THIA' />
-    <Checkbox name='Riboflavin (B2)' id='RIBF' />
-    <Checkbox name='Niacin (B3)' id='NIA' />
-    <Checkbox name='Vitamin B6' id='VITB6A' />
-    <Checkbox name='Folate equivalent (total)' id='FOLDFE' />
-    <Checkbox name='Folate (food)' id='FOLFD' />
-    <Checkbox name='Folic acid' id='FOLAC' />
-    <Checkbox name='Vitamin B12' id='VITB12' />
-    <Checkbox name='Vitamin D' id='VITD' />
-    <Checkbox name='Vitamin K' id='VITK1' />
-    <Checkbox name='Calcium' id='CA' />
-    <Checkbox name='Magnesium' id='MG' />
-    <Checkbox name='Potassium' id='K' />
-    <Checkbox name='Iron' id='FE' />
-    <Checkbox name='Phosphorus' id='P' />
-    <Checkbox name='Zinc' id='ZN' />
-  </StyledContainer>
-);
+const AnalysisOptions = () => {
+  const { state, dispatch } = useContext(MainContext);
+  const handleCheckboxChange = (id) => dispatch({ type: 'CHANGE_CHECKBOX_VALUE', payload: id });
+
+  return (
+    <StyledContainer>
+      <Checkbox
+        name='Vitamin A'
+        id='VITA_RAE'
+        onChange={(e) => handleCheckboxChange(e.target.id)}
+      />
+      <Checkbox name='Vitamin C' id='VITC' onChange={(e) => handleCheckboxChange(e.target.id)} />
+      <Checkbox name='Thiamin (B1)' id='THIA' onChange={(e) => handleCheckboxChange(e.target.id)} />
+      <Checkbox
+        name='Riboflavin (B2)'
+        id='RIBF'
+        onChange={(e) => handleCheckboxChange(e.target.id)}
+      />
+      <Checkbox name='Niacin (B3)' id='NIA' onChange={(e) => handleCheckboxChange(e.target.id)} />
+      <Checkbox name='Vitamin B6' id='VITB6A' onChange={(e) => handleCheckboxChange(e.target.id)} />
+      <Checkbox
+        name='Folate equivalent (total)'
+        id='FOLDFE'
+        onChange={(e) => handleCheckboxChange(e.target.id)}
+      />
+      <Checkbox
+        name='Folate (food)'
+        id='FOLFD'
+        onChange={(e) => handleCheckboxChange(e.target.id)}
+      />
+      <Checkbox name='Folic acid' id='FOLAC' onChange={(e) => handleCheckboxChange(e.target.id)} />
+      <Checkbox
+        name='Vitamin B12'
+        id='VITB12'
+        onChange={(e) => handleCheckboxChange(e.target.id)}
+      />
+      <Checkbox name='Vitamin D' id='VITD' onChange={(e) => handleCheckboxChange(e.target.id)} />
+      <Checkbox name='Vitamin K' id='VITK1' onChange={(e) => handleCheckboxChange(e.target.id)} />
+      <Checkbox name='Calcium' id='CA' onChange={(e) => handleCheckboxChange(e.target.id)} />
+      <Checkbox name='Magnesium' id='MG' onChange={(e) => handleCheckboxChange(e.target.id)} />
+      <Checkbox name='Potassium' id='K' onChange={(e) => handleCheckboxChange(e.target.id)} />
+      <Checkbox name='Iron' id='FE' onChange={(e) => handleCheckboxChange(e.target.id)} />
+      <Checkbox name='Phosphorus' id='P' onChange={(e) => handleCheckboxChange(e.target.id)} />
+      <Checkbox name='Zinc' id='ZN' onChange={(e) => handleCheckboxChange(e.target.id)} />
+    </StyledContainer>
+  );
+};
 
 export default AnalysisOptions;

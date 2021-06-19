@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import MainContext from 'components/Context/MainContext';
+import allTableRows from 'data/allTableRows';
 import ResultsTableRow from './ResultsTableRow';
-import allTableRows from './allTableRows';
 
 const ResultsTableMainData = ({ analysisResultsData }) => {
   const {
     state: { usedTableRows },
   } = useContext(MainContext);
+
   return (
     <>
       {allTableRows

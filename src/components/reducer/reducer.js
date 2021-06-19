@@ -7,6 +7,7 @@ import {
   SET_ANALYSIS_RESULTS_DATA,
   RESET_CHECKED_INGREDIENTS,
   SET_CHECKED_INGREDIENTS,
+  CHANGE_CHECKBOX_VALUE,
 } from './actions';
 
 function rootReducer(state, action) {
@@ -57,6 +58,16 @@ function rootReducer(state, action) {
       return {
         ...state,
         usedTableRows: [...state.usedTableRows, ...action.payload],
+      };
+
+    case CHANGE_CHECKBOX_VALUE:
+      return {
+        ...state,
+        usedTableRows: [
+          ...(state.usedTableRows.includes(action.payload)
+            ? [...state.usedTableRows.filter((ingredient) => ingredient !== action.payload)]
+            : [...state.usedTableRows, action.payload]),
+        ],
       };
 
     case RESET_CHECKED_INGREDIENTS:

@@ -69,13 +69,6 @@ const Main = () => {
     dispatch({ type: 'SET_INPUT_VALUE', payload: value });
   };
 
-  const getCheckedIngredients = () => {
-    const checkedIngredients = [...document.querySelectorAll('input[type="checkbox"]:checked')].map(
-      (checkbox) => checkbox.id,
-    );
-    return checkedIngredients;
-  };
-
   return (
     <StyledMainWrapper>
       <NotificationsList
@@ -89,7 +82,7 @@ const Main = () => {
             placeholder='Enter your ingredient list...'
           />
           <Button
-            onClick={() => handleDataFetching(state, dispatch, getCheckedIngredients())}
+            onClick={() => handleDataFetching(state, dispatch, state.usedTableRows)}
             type='button'
           >
             Analyse!
