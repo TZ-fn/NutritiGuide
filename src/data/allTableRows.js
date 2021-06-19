@@ -137,7 +137,7 @@ const usedTableRows = [
   },
   {
     ingredientName: 'VITK1',
-    customLabel: '',
+    customLabel: 'Vitamin K',
     isBold: false,
     isIndented: false,
   },
