@@ -15,7 +15,6 @@ export const SET_LOADING = 'SET_LOADING';
 
 export const SET_ANALYSIS_RESULTS_DATA = 'SET_ANALYSIS_RESULTS_DATA';
 
-export const RESET_CHECKED_INGREDIENTS = 'RESET_CHECKED_INGREDIENTS';
 export const SET_CHECKED_INGREDIENTS = 'SET_CHECKED_INGREDIENTS';
 
 export const CHANGE_CHECKBOX_VALUE = 'CHANGE_CHECKBOX_VALUE';
@@ -26,7 +25,6 @@ export const handleDataFetching = async (state, dispatch) => {
   // remove all error and warning notifications, clear the ResultsTable
   dispatch({ type: CLEAR_ERRORS, payload: {} });
   dispatch({ type: SET_ANALYSIS_RESULTS_DATA, payload: {} });
-  dispatch({ type: RESET_CHECKED_INGREDIENTS, payload: {} });
 
   // display an error when the input is empty
   if (!state.inputValue.trim()) {
@@ -45,7 +43,7 @@ export const handleDataFetching = async (state, dispatch) => {
     dispatch({ type: SET_LOADING, payload: false });
     response = await response.json();
   } else {
-    // on server error add a new notification
+    // add a new notification on server error
     response = await response.json();
     dispatch({ type: SET_LOADING, payload: false });
     dispatch({
@@ -64,11 +62,6 @@ export const handleDataFetching = async (state, dispatch) => {
     dispatch({ type: SET_LOADING, payload: false });
     return;
   }
-
-  // // filter the table ingredients by the there are any selected checkboxes
-  // if (checkedIngredients.length > 0) {
-  //   dispatch({ type: SET_CHECKED_INGREDIENTS, payload: checkedIngredients });
-  // }
 
   dispatch({ type: SET_ANALYSIS_RESULTS_DATA, payload: response });
 };

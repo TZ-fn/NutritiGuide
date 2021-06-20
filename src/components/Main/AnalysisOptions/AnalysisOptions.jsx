@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import theme from 'theme/mainTheme';
@@ -27,7 +26,7 @@ const StyledContainer = styled.div`
 `;
 
 const AnalysisOptions = () => {
-  const { state, dispatch } = useContext(MainContext);
+  const { dispatch } = useContext(MainContext);
   const handleCheckboxChange = (id) => dispatch({ type: 'CHANGE_CHECKBOX_VALUE', payload: id });
 
   return (

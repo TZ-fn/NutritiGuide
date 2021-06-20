@@ -5,7 +5,6 @@ import {
   SET_LOADING,
   SET_INPUT_VALUE,
   SET_ANALYSIS_RESULTS_DATA,
-  RESET_CHECKED_INGREDIENTS,
   SET_CHECKED_INGREDIENTS,
   CHANGE_CHECKBOX_VALUE,
 } from './actions';
@@ -67,24 +66,6 @@ function rootReducer(state, action) {
           ...(state.usedTableRows.includes(action.payload)
             ? [...state.usedTableRows.filter((ingredient) => ingredient !== action.payload)]
             : [...state.usedTableRows, action.payload]),
-        ],
-      };
-
-    case RESET_CHECKED_INGREDIENTS:
-      return {
-        ...state,
-        usedTableRows: [
-          'FAT',
-          'FASAT',
-          'FAMS',
-          'FAPU',
-          'FATRN',
-          'CHOLE',
-          'NA',
-          'CHOCDF',
-          'FIBTG',
-          'SUGAR',
-          'PROCNT',
         ],
       };
 
