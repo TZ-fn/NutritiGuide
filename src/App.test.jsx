@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import optionalTableRows from 'data/optionalTableRows';
 import App from './App';
 
@@ -22,14 +22,13 @@ it('renders all the checkboxes options from the optionalTableRows file', () => {
 
 it('fetches and renders the data when the "Analyse" button is pressed', async () => {
   render(<App />);
-
   const ingredientsInput = screen.getByPlaceholderText('Enter your ingredient list...');
   const analyseButton = screen.getByText('Analyse!');
 
   fireEvent.change(ingredientsInput, {
     target: { value: '200g butter' },
   });
-
   fireEvent.click(analyseButton);
-  await waitFor(() => expect(screen.getByText(/Calories/)).toBeInTheDocument());
+
+  expect(await screen.findByText(/Calories/, {}, { timeout: 2000 })).toBeInTheDocument();
 });
