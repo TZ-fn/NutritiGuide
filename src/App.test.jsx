@@ -3,14 +3,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import optionalTableRows from 'data/optionalTableRows';
 import App from './App';
 
-it('renders the default notification', () => {
-  render(<App />);
-  const defaultNotification = screen.getByText(
-    /Enter your food's ingredients, each ingredient on a new line,/i,
-  );
-  expect(defaultNotification).toBeInTheDocument();
-});
-
 it('renders all the checkboxes options from the optionalTableRows file', () => {
   render(<App />);
   const allCheckboxes = optionalTableRows.map((ingredient) => ingredient.name);
