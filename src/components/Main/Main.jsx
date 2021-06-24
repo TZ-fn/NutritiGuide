@@ -79,7 +79,7 @@ const Main = () => {
         <StyledInputAreaWrapper>
           <TextArea
             onChange={(e) => handleInputValue(e.target.value)}
-            placeholder='Enter your ingredient list...'
+            placeholder='Enter your ingredients list...'
           />
           <Button
             onClick={() => handleDataFetching(state, dispatch, state.usedTableRows)}
