@@ -14,7 +14,7 @@ it('renders all the checkboxes options from the optionalTableRows file', () => {
 
 it('fetches and renders the data when the "Analyse" button is pressed', async () => {
   render(<App />);
-  const ingredientsInput = screen.getByPlaceholderText('Enter your ingredient list...');
+  const ingredientsInput = screen.getByPlaceholderText('Enter your ingredients list...');
   const analyseButton = screen.getByText('Analyse!');
 
   fireEvent.change(ingredientsInput, {
