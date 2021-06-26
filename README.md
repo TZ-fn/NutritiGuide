@@ -10,6 +10,11 @@ Besides the default ingredients rows users can add additional rows of ingredient
 
 ## Technologies used
 
+React
+React Hooks
+Styled Components
+React Testing Library
+
 ## What problems I had encountered
 
 ## Live version
