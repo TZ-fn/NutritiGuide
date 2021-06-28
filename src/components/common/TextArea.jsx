@@ -5,7 +5,6 @@ import theme from 'theme/mainTheme';
 
 const StyledTextArea = styled.textarea`
   min-width: 328px;
-  max-width: 400px;
   min-height: 235px;
   padding: 15px 15px;
   border: ${theme.defaultBorder};
@@ -18,7 +17,7 @@ const StyledTextArea = styled.textarea`
     outline: 2px solid ${theme.accentDarkGreen};
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 450px) {
     & {
       width: 400px;
     }
