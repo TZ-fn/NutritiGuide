@@ -12,5 +12,5 @@ it('fetches and renders the data when the "Analyse" button is pressed', async ()
   });
   fireEvent.click(analyseButton);
 
-  expect(await screen.findByText(/Calories/, {}, { timeout: 2000 })).toBeInTheDocument();
+  expect(await screen.findByText(/Calories/, {}, { timeout: 3000 })).toBeInTheDocument();
 });

@@ -41,8 +41,9 @@ describe('Testing the notifications', () => {
       target: { value: 'lorem ipsum abcdf' },
     });
     fireEvent.click(analyseButton);
-    await waitFor(() =>
-      expect(screen.getByText(/Please check the ingredient spelling/)).toBeInTheDocument(),
+    await waitFor(
+      () => expect(screen.getByText(/Please check the ingredient spelling/)).toBeInTheDocument(),
+      { timeout: 3000 },
     );
   });
 });
