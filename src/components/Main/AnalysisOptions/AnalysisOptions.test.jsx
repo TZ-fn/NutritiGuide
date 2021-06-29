@@ -15,7 +15,7 @@ it('renders all the checkboxes options from the optionalTableRows file', () => {
 it('shows/hides correct table rows when the checkboxes values are changed', async () => {
   render(<App />);
   const ingredientsInput = screen.getByPlaceholderText('Enter your ingredients list...');
-  const analyseButton = screen.getByText('Analyse!');
+  const analyseButton = screen.getByRole('button', { name: /analyse/i });
   const options = screen.getAllByRole('checkbox').map((checkbox) => checkbox.name);
   let dataTable;
 

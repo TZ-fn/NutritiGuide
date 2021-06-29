@@ -12,7 +12,7 @@ describe('Testing the notifications', () => {
       /Enter your food's ingredients, each ingredient on a new line,/,
     );
     ingredientsInput = screen.getByPlaceholderText('Enter your ingredients list...');
-    analyseButton = screen.getByText('Analyse!');
+    analyseButton = screen.getByRole('button', { name: /analyse/i });
   });
 
   it('renders the default notification', () => {

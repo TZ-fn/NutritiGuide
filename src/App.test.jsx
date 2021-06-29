@@ -5,7 +5,7 @@ import App from './App';
 it('fetches and renders the data when the "Analyse" button is pressed', async () => {
   render(<App />);
   const ingredientsInput = screen.getByPlaceholderText('Enter your ingredients list...');
-  const analyseButton = screen.getByText('Analyse!');
+  const analyseButton = screen.getByRole('button', { name: /analyse/i });
 
   fireEvent.change(ingredientsInput, {
     target: { value: '200g butter' },
