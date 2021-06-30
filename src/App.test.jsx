@@ -1,6 +1,16 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import mockedApiResponse from 'data/mockedApiResponse';
 import App from './App';
+
+beforeEach(() => {
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      status: 200,
+      json: () => Promise.resolve({ mockedApiResponse }),
+    }),
+  );
+});
 
 it('fetches and renders the data when the "Analyse" button is pressed', async () => {
   render(<App />);
