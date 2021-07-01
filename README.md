@@ -17,4 +17,6 @@ React Testing Library
 
 ## What problems I had encountered
 
+https://github.com/facebook/jest/issues/9131
+
 ## Live version
