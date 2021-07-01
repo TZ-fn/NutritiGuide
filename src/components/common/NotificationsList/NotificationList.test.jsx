@@ -35,15 +35,4 @@ describe('Testing the notifications', () => {
       expect(screen.getByText(/Please enter your food's ingredients/)).toBeInTheDocument(),
     );
   });
-
-  it('renders the error notification when the user input is not valid and the API returns an empty response', async () => {
-    fireEvent.change(ingredientsInput, {
-      target: { value: 'lorem ipsum abcdf' },
-    });
-    fireEvent.click(analyseButton);
-    await waitFor(
-      () => expect(screen.getByText(/Please check the ingredient spelling/)).toBeInTheDocument(),
-      { timeout: 3000 },
-    );
-  });
 });
