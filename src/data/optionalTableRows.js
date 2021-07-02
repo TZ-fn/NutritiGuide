@@ -29,7 +29,7 @@ const optionalTableRows = [
   },
   {
     name: 'Folate (food)',
-    id: 'O',
+    id: 'FOLFD',
   },
   {
     name: 'Folic acid',
