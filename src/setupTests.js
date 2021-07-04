@@ -18,7 +18,7 @@ beforeEach(() => {
       case `https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&ingr=1234asdf`:
         return Promise.resolve({
           status: 200,
-          json: () => Promise.resolve(),
+          json: () => Promise.resolve({ calories: 0, totalWeight: 0 }),
         });
       // server error
       case `https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&ingr=SERVERERROR`:
@@ -28,7 +28,10 @@ beforeEach(() => {
         });
 
       default:
-        return `https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&ingr=`;
+        return Promise.resolve({
+          status: 200,
+          json: () => Promise.resolve({}),
+        });
     }
   });
 });
