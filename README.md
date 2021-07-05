@@ -13,12 +13,15 @@ Besides the default ingredients rows users can add additional rows of ingredient
 1. Enter the food you want to analyse.
 
 2. Click the "Analyse!" button
+
    ![Ingredients Input](https://github.com/TZ-fn/NutritiGuide/blob/main/src/assets/images/readme/input.jpg)
 
 3. Customise the results by toggling the optional table rows.
+
    ![Options Checkboxes](https://github.com/TZ-fn/NutritiGuide/blob/main/src/assets/images/readme/options.jpg)
 
 4. Results will be displayed in a table.
+
    ![Results Table](https://github.com/TZ-fn/NutritiGuide/blob/main/src/assets/images/readme/results.jpg)
 
 ## Technologies used
