@@ -19,7 +19,7 @@ export const SET_CHECKED_INGREDIENTS = 'SET_CHECKED_INGREDIENTS';
 
 export const CHANGE_CHECKBOX_VALUE = 'CHANGE_CHECKBOX_VALUE';
 
-const MAIN_API = `https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&ingr=`;
+export const MAIN_API = `https://api.edamam.com/api/nutrition-data?app_id=${APP_ID}&app_key=${APP_KEY}&ingr=`;
 
 export const handleDataFetching = async (state, dispatch) => {
   // remove all error and warning notifications, clear the ResultsTable

@@ -35,4 +35,22 @@ describe('Testing the notifications', () => {
       expect(screen.getByText(/Please enter your food's ingredients/)).toBeInTheDocument(),
     );
   });
+
+  it('renders the error notification when the ingredients are invalid and the response is empty', async () => {
+    fireEvent.change(ingredientsInput, {
+      target: { value: '1234asdf' },
+    });
+    fireEvent.click(analyseButton);
+    await waitFor(() =>
+      expect(screen.getByText(/Please check the ingredient spelling/)).toBeInTheDocument(),
+    );
+  });
+
+  it('renders the error notification when a server error occurs', async () => {
+    fireEvent.change(ingredientsInput, {
+      target: { value: 'SERVER_ERROR' },
+    });
+    fireEvent.click(analyseButton);
+    await waitFor(() => expect(screen.getByText(/Please try again/)).toBeInTheDocument());
+  });
 });
