@@ -1,5 +1,7 @@
 # NutritiGuide
 
+![NutritiGuide Logo](https://github.com/TZ-fn/NutritiGuide/blob/main/src/assets/images/readme/logo.jpg)
+
 ## About
 
 NutritiGuide is an app using the [Edamam](https://developer.edamam.com/) nutrition analysis API.
