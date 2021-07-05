@@ -8,15 +8,37 @@ Users can pass an ingredients list to the API and in result will receive a custo
 
 Besides the default ingredients rows users can add additional rows of ingredients using the checkboxes under the textarea element.
 
+## Usage
+
+![Ingredients Input](https://github.com/TZ-fn/NutritiGuide/blob/main/src/assets/images/readme/input.jpg)
+
+1. Enter the food you want to analyse.
+
+2. Click the "Analyse!" button
+
+![Options Checkboxes](https://github.com/TZ-fn/NutritiGuide/blob/main/src/assets/images/readme/options.jpg)
+
+3. Customise the results by toggling the optional table rows.
+
+![Results Table](https://github.com/TZ-fn/NutritiGuide/blob/main/src/assets/images/readme/results.jpg)
+
 ## Technologies used
 
 React
+
 React Hooks
+
 Styled Components
+
+Jest
+
 React Testing Library
 
 ## What problems I had encountered
 
-https://github.com/facebook/jest/issues/9131
+When I tried to mock the API calls in my test, I encountered a problem when the mocked `fetch()` function was always returning `undefined` instead of the mocked values. The culprit turned out to be `resetMocks:true` added in the `react-scripts`. Inspirited by this [github issue](https://github.com/facebook/jest/issues/9131),
+I used `beforeEach()` to mock the `fetch()` function which solved the `undefined` errors.
 
 ## Live version
+
+Live version can be found [here]().
