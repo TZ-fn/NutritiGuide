@@ -31,6 +31,7 @@ describe('Testing the notifications', () => {
       target: { value: '' },
     });
     fireEvent.click(analyseButton);
+    expect(fetch).not.toHaveBeenCalled();
     expect(await screen.findByText(/Please enter your food's ingredients/)).toBeInTheDocument();
   });
 
@@ -39,6 +40,7 @@ describe('Testing the notifications', () => {
       target: { value: '1234asdf' },
     });
     fireEvent.click(analyseButton);
+    expect(fetch).toHaveBeenCalledTimes(1);
     expect(await screen.findByText(/Please check the ingredient spelling/)).toBeInTheDocument();
   });
 
@@ -47,6 +49,7 @@ describe('Testing the notifications', () => {
       target: { value: 'SERVER_ERROR' },
     });
     fireEvent.click(analyseButton);
+    expect(fetch).toHaveBeenCalledTimes(1);
     expect(await screen.findByText(/Please try again/)).toBeInTheDocument();
   });
 });

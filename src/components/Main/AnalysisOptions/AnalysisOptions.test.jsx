@@ -26,7 +26,7 @@ describe('Testing the checkboxes for the optional table rows', () => {
       target: { value: '200g butter' },
     });
     fireEvent.click(analyseButton);
-
+    expect(fetch).toHaveBeenCalledTimes(1);
     await waitFor(() => {
       const dataTable = screen.getByRole('table');
     });

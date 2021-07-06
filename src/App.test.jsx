@@ -11,6 +11,6 @@ it('fetches and renders the data when the "Analyse" button is pressed', async ()
     target: { value: '200g butter' },
   });
   fireEvent.click(analyseButton);
-
+  expect(fetch).toHaveBeenCalledTimes(1);
   expect(await screen.findByText(/Calories/, {}, { timeout: 3000 })).toBeInTheDocument();
 });
