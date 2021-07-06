@@ -31,9 +31,7 @@ describe('Testing the notifications', () => {
       target: { value: '' },
     });
     fireEvent.click(analyseButton);
-    await waitFor(() =>
-      expect(screen.getByText(/Please enter your food's ingredients/)).toBeInTheDocument(),
-    );
+    expect(await screen.findByText(/Please enter your food's ingredients/)).toBeInTheDocument();
   });
 
   it('renders the error notification when the ingredients are invalid and the response is empty', async () => {
@@ -41,9 +39,7 @@ describe('Testing the notifications', () => {
       target: { value: '1234asdf' },
     });
     fireEvent.click(analyseButton);
-    await waitFor(() =>
-      expect(screen.getByText(/Please check the ingredient spelling/)).toBeInTheDocument(),
-    );
+    expect(await screen.findByText(/Please check the ingredient spelling/)).toBeInTheDocument();
   });
 
   it('renders the error notification when a server error occurs', async () => {
@@ -51,6 +47,6 @@ describe('Testing the notifications', () => {
       target: { value: 'SERVER_ERROR' },
     });
     fireEvent.click(analyseButton);
-    await waitFor(() => expect(screen.getByText(/Please try again/)).toBeInTheDocument());
+    expect(await screen.findByText(/Please try again/)).toBeInTheDocument();
   });
 });
