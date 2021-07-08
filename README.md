@@ -45,4 +45,4 @@ I used `beforeEach()` to mock the `fetch()` function which solved the `undefined
 
 ## Live version
 
-Live version can be found [here]().
+Live version can be found [here](https://tz-fn.github.io/NutritiGuide/).
